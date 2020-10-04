@@ -1,7 +1,7 @@
 #include "Grid.h"
 
-Grid::Grid(int x, int y)
-	: x(x), y(y)
+Grid::Grid(int x, int y, int num)
+	: x(x), y(y), num(num)
 {
 }
 
@@ -15,9 +15,14 @@ int Grid::GetY()
 	return y;
 }
 
+int Grid::GetNum()
+{
+	return num;
+}
+
 std::string Grid::ToString()
 {
 	std::ostringstream ostr;
-	ostr << "x=" << x << ", y=" << y;
+	ostr << "x=" << x << ", y=" << y << ", num=" << num;
 	return ostr.str();
 }
