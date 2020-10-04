@@ -1,4 +1,5 @@
 # User Settings
+.DS_Store
 build/*
 
 # Prerequisites
