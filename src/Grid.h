@@ -5,6 +5,7 @@
 
 class Grid
 {
+private:
 	int x;
 	int y;
 

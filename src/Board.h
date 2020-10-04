@@ -6,7 +6,9 @@ using namespace std;
 
 class Board
 {
+private:
 	vector<Panel> board; //Number型のvectorコンテナ
+
 public:
 	Board(); //constractor
 	const int ROW;
