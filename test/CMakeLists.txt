@@ -4,11 +4,12 @@ find_package(GTest REQUIRED)
 include(GoogleTest)
 
 add_executable(
-    GridTest
+    15PuzzleTest
     GridTest.cc
+    PanelTest.cc
 )
 target_link_libraries(
-    GridTest
+    15PuzzleTest
     15Puzzle
     GTest::GTest
     GTest::Main
@@ -19,5 +20,5 @@ include_directories(
 )
 gtest_add_tests(
     TARGET
-    GridTest
+    15PuzzleTest
 )
