@@ -1,13 +1,13 @@
 #pragma once
 #include <vector>
-#include "Number.h"
+#include "panel.h"
 
 using namespace std;
 
-class BoardManager{
-    vector<Number> board;  //Number型のvectorコンテナ
+class board{
+    vector<panel> board;  //Number型のvectorコンテナ
 public:
-	BoardManager();  //constractor
+	board();  //constractor
 	const int ROW;
 	const int COL;
     void show();

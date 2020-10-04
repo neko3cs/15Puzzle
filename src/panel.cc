@@ -1,17 +1,17 @@
-#include "Number.h"
+#include "panel.h"
 
-Number::Number(int num, int x, int y)
+panel::panel(int num, int x, int y)
 	:num(num), x(x), y(y)
 {}
 
-int Number::getNum(){
+int panel::get_num(){
 	return num;
 }
 
-int Number::getX(){
+int panel::get_x(){
 	return x;
 }
 
-int Number::getY(){
+int panel::get_y(){
 	return y;
 }

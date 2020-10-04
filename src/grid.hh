@@ -2,12 +2,12 @@
 
 using namespace std;
 
-class GridPoint{
+class grid{
 	int x;
 	int y;
 public:
-	GridPoint(int x, int y);  //constractor
-	int getX();
-	int getY();
-	string toString();
+	grid(int x, int y);  //constractor
+	int get_x();
+	int get_y();
+	string to_string();
 };

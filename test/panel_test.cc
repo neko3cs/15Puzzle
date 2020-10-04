@@ -1,25 +1,25 @@
-#include "../src/Number.h"
+#include "../src/panel.h"
 #include <iostream>
 
 using namespace std;
 
-Number number;
+panel panel;
 
-void getNumTest(){
-	cout << number.getNum() << endl;
+void get_num_test(){
+	cout << panel.get_num() << endl;
 }
 
-void getXtest(){
-	cout << number.getX() << endl;
+void get_x_test(){
+	cout << panel.get_x() << endl;
 }
 
-void getYtest(){
-	cout << number.getY() << endl;
+void get_y_test(){
+	cout << panel.get_y() << endl;
 }
 
 int main(void){
-	number = Number(1, 0, 0);
-	getNumTest();
-	getXtest();
-	getYtest();
+	panel = panel(1, 0, 0);
+	get_num_test();
+	get_x_test();
+	get_y_test();
 }

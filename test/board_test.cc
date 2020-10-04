@@ -1,12 +1,12 @@
-#include "../src/BoardManager.hh"
+#include "../src/board.h"
 #include <iostream>
 
 using namespace std;
 
-BoardManager board;
+board board;
 
 int main(void){
-    BoardManager board = BoardManager();
+    board board = board();
     
     board.show();
     

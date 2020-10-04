@@ -1,21 +1,21 @@
-#include "GridPoint.h"
+#include "grid.h"
 #include <string.h>
 
 using namespace std;
 
-GridPoint::GridPoint(int x, int y)
+grid::grid(int x, int y)
 	: x(x), y(y)
 {}
 
-int GridPoint::getX(){
+int grid::get_x(){
 	return x;
 }
 
-int GridPoint::getY(){
+int grid::get_y(){
 	return y;
 }
 
-string GridPoint::toString(){
+string grid::to_string(){
 	string str = string.format("x=%d, y=%d", x, y);  //written in java
 	return str;
 }
