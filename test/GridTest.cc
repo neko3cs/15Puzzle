@@ -3,24 +3,24 @@
 
 TEST(GridTest, GetXTest)
 {
-    Grid Grid(1, 1, 1);
-    EXPECT_EQ(1, Grid.GetX());
+    Grid grid(1, 1, 1);
+    EXPECT_EQ(1, grid.GetX());
 }
 
 TEST(GridTest, GetYTest)
 {
-    Grid Grid(1, 1, 1);
-    EXPECT_EQ(1, Grid.GetY());
+    Grid grid(1, 1, 1);
+    EXPECT_EQ(1, grid.GetY());
 }
 
 TEST(GridTest, GetNumTest)
 {
-    Grid Grid(1, 1, 1);
-    EXPECT_EQ(1, Grid.GetY());
+    Grid grid(1, 1, 1);
+    EXPECT_EQ(1, grid.GetY());
 }
 
 TEST(GridTest, ToStringTest)
 {
-    Grid Grid(1, 1, 1);
-    EXPECT_EQ("x=1, y=1, num=1", Grid.ToString());
+    Grid grid(1, 1, 1);
+    EXPECT_EQ("x=1, y=1, num=1", grid.ToString());
 }
