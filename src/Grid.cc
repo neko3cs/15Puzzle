@@ -1,21 +1,21 @@
-#include "grid.h"
+#include "Grid.h"
 
-grid::grid(int x, int y)
+Grid::Grid(int x, int y)
 	: x(x), y(y)
 {
 }
 
-int grid::get_x()
+int Grid::GetX()
 {
 	return x;
 }
 
-int grid::get_y()
+int Grid::GetY()
 {
 	return y;
 }
 
-std::string grid::to_string()
+std::string Grid::ToString()
 {
 	std::ostringstream ostr;
 	ostr << "x=" << x << ", y=" << y;

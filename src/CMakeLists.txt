@@ -1,10 +1,11 @@
 cmake_minimum_required(VERSION 3.18)
 set(
     SOURCE
-    ./grid.cc
-    ./panel.cc
-    ./grid.cc
+    ./Grid.cc
+    ./Panel.cc
+    ./Board.cc
 )
 add_library(
-    15Puzzle STATIC ${SOURCE}
+    15Puzzle STATIC
+    ${SOURCE}
 )

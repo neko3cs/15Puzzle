@@ -3,14 +3,14 @@
 #include <string>
 #include <sstream>
 
-class grid
+class Grid
 {
 	int x;
 	int y;
 
 public:
-	grid(int x, int y);
-	int get_x();
-	int get_y();
-	std::string to_string();
+	Grid(int x, int y);
+	int GetX();
+	int GetY();
+	std::string ToString();
 };

@@ -3,12 +3,11 @@
 
 using namespace std;
 
-board board;
+Board board;
 
-int main(void){
-    board board = board();
-    
+int main(void)
+{
     board.show();
-    
+
     return 0;
 }
