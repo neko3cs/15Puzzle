@@ -1,13 +1,16 @@
 #pragma once
+#include <iostream>
+#include <string>
+#include <sstream>
 
-using namespace std;
-
-class grid{
+class grid
+{
 	int x;
 	int y;
+
 public:
-	grid(int x, int y);  //constractor
+	grid(int x, int y);
 	int get_x();
 	int get_y();
-	string to_string();
+	std::string to_string();
 };

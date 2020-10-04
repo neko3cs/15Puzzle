@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.18)
+set(CMAKE_CXX_FLAGS "-O2 -std=c++17 -Wall")
+project(15Puzzle)
+enable_testing()
+add_subdirectory(src)
+add_subdirectory(test)
