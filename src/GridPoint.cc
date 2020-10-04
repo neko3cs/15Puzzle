@@ -19,5 +19,3 @@ string GridPoint::toString(){
 	string str = string.format("x=%d, y=%d", x, y);  //written in java
 	return str;
 }
-
-

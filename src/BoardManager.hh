@@ -13,5 +13,3 @@ public:
     void show();
 	void initialize();
 };
-
-

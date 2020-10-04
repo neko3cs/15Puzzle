@@ -48,5 +48,3 @@ void BoardManager::show(){
         cout << endl;
     }
 }
-
-
