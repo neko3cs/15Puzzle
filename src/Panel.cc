@@ -1,21 +1,11 @@
 #include "Panel.h"
 
-Panel::Panel(int num, int x, int y)
-	: num(num), x(x), y(y)
+Panel::Panel(Grid grid)
+	: grid(grid)
 {
 }
 
-int Panel::GetNum()
+Grid Panel::GetGrid()
 {
-	return num;
-}
-
-int Panel::GetX()
-{
-	return x;
-}
-
-int Panel::GetY()
-{
-	return y;
+	return grid;
 }

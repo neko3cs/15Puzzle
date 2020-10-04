@@ -1,29 +1,11 @@
+#include "gtest/gtest.h"
+#include "../src/Grid.h"
 #include "../src/Panel.h"
 #include <iostream>
 
-using namespace std;
-
-Panel panel;
-
-void GetNumTest()
+TEST(PanelTest, GetGridTest)
 {
-	cout << panel.GetNum() << endl;
-}
-
-void GetXTest()
-{
-	cout << panel.GetX() << endl;
-}
-
-void GetYTest()
-{
-	cout << panel.GetY() << endl;
-}
-
-int main(void)
-{
-	Panel panel(1, 0, 0);
-	GetNumTest();
-	GetXTest();
-	GetYTest();
+	Grid grid(1, 1, 1);
+	Panel panel(grid);
+	EXPECT_EQ(grid.ToString(), panel.GetGrid().ToString());
 }

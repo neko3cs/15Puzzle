@@ -1,16 +1,14 @@
 #pragma once
+#include "Grid.h"
 
 class Panel
 {
 private:
-	int num; //パネルの番号
-	int x;
-	int y;
+	Panel();
+	Grid grid;
+	// TODO: 分割した画像変数を持つ
 
 public:
-	Panel();
-	Panel(int num, int x, int y);
-	int GetNum();
-	int GetX();
-	int GetY();
+	Panel(Grid grid);
+	Grid GetGrid();
 };
