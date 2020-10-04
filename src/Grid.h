@@ -6,6 +6,7 @@
 class Grid
 {
 private:
+	Grid();
 	int x;
 	int y;
 	int num;
