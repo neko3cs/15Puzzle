@@ -1,4 +1,4 @@
-#include "Number.h"
+#include "../src/Number.h"
 #include <iostream>
 
 using namespace std;

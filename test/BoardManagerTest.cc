@@ -1,4 +1,4 @@
-#include "BoardManager.h"
+#include "../src/BoardManager.hh"
 #include <iostream>
 
 using namespace std;
