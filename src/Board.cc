@@ -7,50 +7,49 @@
 #include <random>    //default_random_engine()用
 #include <chrono>    //system_clock()用
 
-using namespace std;
+Board::Board()
+    : ROW(4), COL(4)
+{
+    Initialize();
+}
 
-void Board::initialize()
+void Board::Initialize()
 {
     //時間ベースのシードを取得
     unsigned seed =
         chrono::system_clock::now().time_since_epoch().count();
 
     //仮のコンテナにROW*COL分の数字を格納する
-    vector<int> panels;
+    vector<int> panelNums;
     for (int num = 1; num <= ROW * COL; num++)
     {
-        panels.push_back(num);
+        panelNums.push_back(num);
     }
 
     //ランダムにシャッフルする
     auto engine = default_random_engine(seed);
-    shuffle(panels.begin(), panels.end(), engine);
+    shuffle(panelNums.begin(), panelNums.end(), engine);
 
     //仮コンテナのシャッフルした数字をボードに並べる
     for (int x = 0; x < ROW; x++)
     {
         for (int y = 0; y < COL; y++)
         {
-            Panel panel = Panel(panels.at(x * ROW + y), x, y);
+            Grid grid(x, y, panelNums.at(x * ROW + y));
+            Panel panel(grid);
             board.push_back(panel);
         }
     }
 }
 
-Board::Board()
-    : ROW(4), COL(4)
-{
-    initialize();
-}
-
-void Board::show()
+void Board::Show()
 {
     for (int i = 0; i < ROW; i++)
     {
         for (int j = 0; j < COL; j++)
         {
             cout.width(2); //可視性を上げる
-            cout << board[i * ROW + j].GetNum() << ' ';
+            cout << board[i * ROW + j].GetGrid().GetNum() << ' ';
         }
         cout << endl;
     }

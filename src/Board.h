@@ -7,12 +7,12 @@ using namespace std;
 class Board
 {
 private:
-	vector<Panel> board; //Number型のvectorコンテナ
+	vector<Panel> board;
 
 public:
-	Board(); //constractor
+	Board();
 	const int ROW;
 	const int COL;
-	void show();
-	void initialize();
+	void Initialize();
+	void Show();
 };

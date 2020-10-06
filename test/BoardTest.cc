@@ -1,13 +1,11 @@
+#include "gtest/gtest.h"
 #include "../src/board.h"
 #include <iostream>
 
-using namespace std;
-
-Board board;
-
-int main(void)
+TEST(BoardTest, InitTest)
 {
-    board.show();
+    Board board();
 
-    return 0;
+    // TODO: テスト容易性が低いので設計を見直す
+    EXPECT_EQ(1, 1);
 }
