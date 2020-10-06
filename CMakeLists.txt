@@ -4,3 +4,11 @@ project(15Puzzle)
 enable_testing()
 add_subdirectory(src)
 add_subdirectory(test)
+set(
+    SOURCE
+    src/Grid.cc
+    src/Panel.cc
+    src/Board.cc
+    src/main.cc
+)
+add_executable(a.out ${SOURCE})
