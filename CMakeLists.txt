@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.18)
+cmake_minimum_required(VERSION 3.16)
 set(CMAKE_CXX_FLAGS "-O2 -std=c++17 -Wall")
 project(15Puzzle)
 enable_testing()
