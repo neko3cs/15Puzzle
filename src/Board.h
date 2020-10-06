@@ -7,12 +7,12 @@ using namespace std;
 class Board
 {
 private:
+	const int ROW;
+	const int COL;
 	vector<Panel> board;
 
 public:
 	Board();
-	const int ROW;
-	const int COL;
 	void Initialize();
 	void Show();
 };
