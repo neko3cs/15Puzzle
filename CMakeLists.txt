@@ -8,7 +8,7 @@ set(
     SOURCE
     src/Grid.cc
     src/Panel.cc
-    src/Board.cc
+    src/BoardManager.cc
     src/main.cc
 )
 add_executable(a.out ${SOURCE})

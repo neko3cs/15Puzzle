@@ -1,8 +1,8 @@
 #include "gtest/gtest.h"
-#include "../src/board.h"
+#include "../src/BoardManager.h"
 #include <iostream>
 
-TEST(BoardTest, InitTest)
+TEST(BoardManagerTest, InitTest)
 {
     Board board();
 

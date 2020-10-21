@@ -1,4 +1,4 @@
-#include "Board.h"
+#include "BoardManager.h"
 #include "Panel.h"
 #include <iostream>
 #include <list>

@@ -7,7 +7,7 @@ add_executable(
     15PuzzleTest
     GridTest.cc
     PanelTest.cc
-    BoardTest.cc
+    BoardManagerTest.cc
 )
 target_link_libraries(
     15PuzzleTest

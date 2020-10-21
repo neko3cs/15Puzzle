@@ -1,4 +1,4 @@
-#include "Board.h"
+#include "BoardManager.h"
 
 int main(int argc, char const *argv[])
 {

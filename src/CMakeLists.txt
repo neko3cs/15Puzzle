@@ -3,7 +3,7 @@ set(
     SOURCE
     ./Grid.cc
     ./Panel.cc
-    ./Board.cc
+    ./BoardManager.cc
 )
 add_library(
     15Puzzle STATIC
