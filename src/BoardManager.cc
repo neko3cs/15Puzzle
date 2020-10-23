@@ -7,13 +7,23 @@
 #include <random>    //default_random_engine()用
 #include <chrono>    //system_clock()用
 
-Board::Board()
+BoardManager::BoardManager()
     : ROW(4), COL(4)
 {
     Initialize();
 }
 
-void Board::Initialize()
+int BoardManager::GetRow()
+{
+    return ROW;
+}
+
+int BoardManager::GetColumn()
+{
+    return COL;
+}
+
+void BoardManager::Initialize()
 {
     //時間ベースのシードを取得
     unsigned seed =
@@ -42,15 +52,7 @@ void Board::Initialize()
     }
 }
 
-void Board::Show()
+vector<Panel> BoardManager::GetBoard()
 {
-    for (int i = 0; i < ROW; i++)
-    {
-        for (int j = 0; j < COL; j++)
-        {
-            cout.width(2); //可視性を上げる
-            cout << board[i * ROW + j].GetGrid().GetNum() << ' ';
-        }
-        cout << endl;
-    }
+    return board;
 }

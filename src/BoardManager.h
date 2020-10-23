@@ -4,7 +4,7 @@
 
 using namespace std;
 
-class Board
+class BoardManager
 {
 private:
 	const int ROW;
@@ -12,7 +12,9 @@ private:
 	vector<Panel> board;
 
 public:
-	Board();
+	BoardManager();
+	int GetRow();
+	int GetColumn();
 	void Initialize();
-	void Show();
+	vector<Panel> GetBoard();
 };

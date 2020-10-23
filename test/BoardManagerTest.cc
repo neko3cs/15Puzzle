@@ -2,10 +2,20 @@
 #include "../src/BoardManager.h"
 #include <iostream>
 
-TEST(BoardManagerTest, InitTest)
+TEST(BoardManagerTest, GetRowTest)
 {
-    Board board();
+    BoardManager boardManager;
+    EXPECT_EQ(4, boardManager.GetRow());
+}
 
-    // TODO: テスト容易性が低いので設計を見直す
-    EXPECT_EQ(1, 1);
+TEST(BoardManagerTest, GetColumnTest)
+{
+    BoardManager boardManager;
+    EXPECT_EQ(4, boardManager.GetColumn());
+}
+
+TEST(BoardManagerTest, InitializeTest)
+{
+    BoardManager boardManager;
+    EXPECT_EQ(16, boardManager.GetBoard().size());
 }
