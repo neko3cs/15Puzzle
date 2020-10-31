@@ -17,9 +17,9 @@ void ShowBoard(BoardManager boardManager)
     {
         for (int j = 0; j < boardManager.GetColumn(); j++)
         {
-            cout.width(2); //可視性を上げる
-            cout << boardManager.GetBoard()[i * boardManager.GetRow() + j].GetGrid().GetNum() << ' ';
+            std::cout.width(2); //可視性を上げる
+            std::cout << boardManager.GetBoard()[i * boardManager.GetRow() + j].GetGrid().GetNum() << ' ';
         }
-        cout << endl;
+        std::cout << std::endl;
     }
 }

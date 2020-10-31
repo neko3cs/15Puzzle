@@ -68,7 +68,17 @@
         "unordered_map": "cpp",
         "utility": "cpp",
         "xutility": "cpp",
-        "xiosbase": "cpp"
+        "xiosbase": "cpp",
+        "compare": "cpp",
+        "concepts": "cpp",
+        "xfacet": "cpp",
+        "xlocale": "cpp",
+        "xlocinfo": "cpp",
+        "xlocnum": "cpp",
+        "xmemory": "cpp",
+        "xstddef": "cpp",
+        "xstring": "cpp",
+        "xtr1common": "cpp"
     },
     "C_Cpp.errorSquiggles": "Disabled"
 }

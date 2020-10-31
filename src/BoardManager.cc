@@ -27,17 +27,17 @@ void BoardManager::Initialize()
 {
     //時間ベースのシードを取得
     unsigned seed =
-        chrono::system_clock::now().time_since_epoch().count();
+        std::chrono::system_clock::now().time_since_epoch().count();
 
     //仮のコンテナにROW*COL分の数字を格納する
-    vector<int> panelNums;
+    std::vector<int> panelNums;
     for (int num = 1; num <= ROW * COL; num++)
     {
         panelNums.push_back(num);
     }
 
     //ランダムにシャッフルする
-    auto engine = default_random_engine(seed);
+    auto engine = std::default_random_engine(seed);
     shuffle(panelNums.begin(), panelNums.end(), engine);
 
     //仮コンテナのシャッフルした数字をボードに並べる
@@ -52,7 +52,7 @@ void BoardManager::Initialize()
     }
 }
 
-vector<Panel> BoardManager::GetBoard()
+std::vector<Panel> BoardManager::GetBoard()
 {
     return board;
 }
