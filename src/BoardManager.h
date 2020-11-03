@@ -8,7 +8,6 @@ private:
 	const int ROW;
 	const int COL;
 	std::vector<Panel> board;
-
 public:
 	BoardManager();
 	int GetRow();

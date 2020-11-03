@@ -10,7 +10,6 @@ private:
 	int x;
 	int y;
 	int num;
-
 public:
 	Grid(int x, int y, int num);
 	int GetX();
