@@ -3,19 +3,29 @@
 #include "../src/Panel.h"
 #include <iostream>
 
-TEST(PanelTest, GetGridTest)
+TEST(PanelTest, ToStringReturnSquare)
 {
 	Grid grid(1, 1, 1);
 	Panel panel(grid);
-	EXPECT_EQ(grid.ToString(), panel.GetGrid().ToString());
+	EXPECT_EQ("■", panel.ToString());
 }
 
-TEST(PanelTest, IsHiddenTest)
+TEST(PanelTest, ToStringReturnNumber)
+{
+	Grid grid(1, 1, 2);
+	Panel panel(grid);
+	EXPECT_EQ("2", panel.ToString());
+}
+
+TEST(PanelTest, IsHiddenReturnTrue)
 {
 	Grid hideGrid(1, 1, 1);
 	Panel hidePanel(hideGrid);
 	EXPECT_EQ(true, hidePanel.IsHidden());
+}
 
+TEST(PanelTest, IsHiddenReturnFalse)
+{
 	Grid grid(1, 1, 2);
 	Panel panel(grid);
 	EXPECT_EQ(false, panel.IsHidden());

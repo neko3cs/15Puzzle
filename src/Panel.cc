@@ -5,9 +5,10 @@ Panel::Panel(Grid grid)
 {
 }
 
-Grid Panel::GetGrid()
+std::string Panel::ToString()
 {
-	return grid;
+	// TODO: いずれは画像を返す
+	return this->IsHidden() ? "■" : std::to_string(grid.GetNum());
 }
 
 bool Panel::IsHidden()

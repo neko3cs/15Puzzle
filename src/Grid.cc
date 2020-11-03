@@ -19,10 +19,3 @@ int Grid::GetNum()
 {
 	return num;
 }
-
-std::string Grid::ToString()
-{
-	std::ostringstream ostr;
-	ostr << "x=" << x << ", y=" << y << ", num=" << num;
-	return ostr.str();
-}

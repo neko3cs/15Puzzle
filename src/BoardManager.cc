@@ -52,7 +52,7 @@ void BoardManager::Initialize()
     }
 }
 
-std::vector<Panel> BoardManager::GetBoard()
+Panel BoardManager::GetPanelByCoord(int x, int y)
 {
-    return board;
+    return board[x * ROW + y];
 }

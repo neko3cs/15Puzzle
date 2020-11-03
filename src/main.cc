@@ -1,4 +1,5 @@
 #include "BoardManager.h"
+#include <iostream>
 
 void ShowBoard(BoardManager boardManager);
 
@@ -18,7 +19,7 @@ void ShowBoard(BoardManager boardManager)
         for (int j = 0; j < boardManager.GetColumn(); j++)
         {
             std::cout.width(2); //可視性を上げる
-            std::cout << boardManager.GetBoard()[i * boardManager.GetRow() + j].GetGrid().GetNum() << ' ';
+            std::cout << boardManager.GetPanelByCoord(i, j).ToString() << ' ';
         }
         std::cout << std::endl;
     }
