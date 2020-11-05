@@ -10,7 +10,6 @@
 BoardManager::BoardManager()
     : ROW(4), COL(4)
 {
-    Initialize();
 }
 
 int BoardManager::GetRow()

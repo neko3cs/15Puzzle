@@ -4,6 +4,7 @@ set(
     ./Grid.cc
     ./Panel.cc
     ./BoardManager.cc
+    ./GameManager.cc
 )
 add_library(
     15Puzzle STATIC

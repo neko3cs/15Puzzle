@@ -9,6 +9,7 @@ set(
     src/Grid.cc
     src/Panel.cc
     src/BoardManager.cc
+    src/GameManager.cc
     src/main.cc
 )
 add_executable(a.out ${SOURCE})
