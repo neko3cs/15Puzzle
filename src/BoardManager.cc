@@ -8,8 +8,35 @@
 #include <chrono>    //system_clock()用
 
 BoardManager::BoardManager()
-    : ROW(4), COL(4)
 {
+}
+
+std::vector<Panel>::iterator BoardManager::GetPanelIterByDirection(Panel panel, MoveDirection direction)
+{
+    // TODO: 枠沿いのパネルの当たり判定の実装（移動負荷の場合は入れ替えない）
+
+    int targetX = panel.GetGrid().GetX();
+    int targetY = panel.GetGrid().GetY();
+
+    switch (direction)
+    {
+    case MoveDirection::Up:
+        targetX -= 1;
+        break;
+    case MoveDirection::Right:
+        targetY += 1;
+        break;
+    case MoveDirection::Down:
+        targetX += 1;
+        break;
+    case MoveDirection::Left:
+        targetY -= 1;
+        break;
+    default:
+        throw std::invalid_argument("invalid direction.");
+    }
+
+    return std::find_if(board.begin(), board.end(), [&targetX, &targetY](Panel p) { return p.GetGrid().GetX() == targetX && p.GetGrid().GetY() == targetY; });
 }
 
 int BoardManager::GetRow()
@@ -54,4 +81,11 @@ void BoardManager::Initialize()
 Panel BoardManager::GetPanelByCoord(int x, int y)
 {
     return board[x * ROW + y];
+}
+
+void BoardManager::MovePanel(MoveDirection direction)
+{
+    auto hiddenPanelIter = std::find_if(board.begin(), board.end(), [](Panel p) { return p.IsHidden(); });
+    auto changePanelIter = this->GetPanelIterByDirection(*hiddenPanelIter, direction);
+    std::iter_swap(hiddenPanelIter, changePanelIter);
 }

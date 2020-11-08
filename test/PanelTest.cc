@@ -17,6 +17,15 @@ TEST(PanelTest, ToStringReturnNumber)
 	EXPECT_EQ("2", panel.ToString());
 }
 
+TEST(PanelTest, GetGridReturnSameGrid)
+{
+	Grid grid(1, 1, 1);
+	Panel panel(grid);
+	EXPECT_EQ(grid.GetX(), panel.GetGrid().GetX());
+	EXPECT_EQ(grid.GetY(), panel.GetGrid().GetY());
+	EXPECT_EQ(grid.GetNum(), panel.GetGrid().GetNum());
+}
+
 TEST(PanelTest, IsHiddenReturnTrue)
 {
 	Grid hideGrid(1, 1, 1);
