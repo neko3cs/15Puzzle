@@ -7,7 +7,7 @@ TEST(PanelTest, ToStringReturnSquare)
 {
 	Grid grid(1, 1, 1);
 	Panel panel(grid);
-	EXPECT_EQ("■", panel.ToString());
+	EXPECT_EQ("■ ", panel.ToString());
 }
 
 TEST(PanelTest, ToStringReturnNumber)
