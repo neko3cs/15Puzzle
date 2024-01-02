@@ -1,6 +1,4 @@
-# User Settings
-.DS_Store
-build/*
+# C++ .gitignore ---------------------------------------------------
 
 # Prerequisites
 *.d
@@ -34,3 +32,19 @@ build/*
 *.exe
 *.out
 *.app
+
+# CMake .gitignore ---------------------------------------------------
+CMakeLists.txt.user
+CMakeCache.txt
+CMakeFiles
+CMakeScripts
+Testing
+Makefile
+cmake_install.cmake
+install_manifest.txt
+compile_commands.json
+CTestTestfile.cmake
+_deps
+
+# User .gitignore ---------------------------------------------------
+test/15PuzzleTest
