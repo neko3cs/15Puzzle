@@ -80,5 +80,5 @@
         "xstring": "cpp",
         "xtr1common": "cpp"
     },
-    "C_Cpp.errorSquiggles": "Disabled"
+    "C_Cpp.errorSquiggles": "enabled"
 }
