@@ -1,10 +1,11 @@
 cmake_minimum_required(VERSION 3.16)
 project(15Puzzle)
 
-set(CMAKE_CXX_FLAGS "-O2 -std=c++17 -Wall")
+add_compile_options(-Wall -O3 -std=c++20)
 
 add_subdirectory(src)
 add_subdirectory(test)
+
 add_executable(
     a.out
     src/main.cc
