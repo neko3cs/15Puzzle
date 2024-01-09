@@ -9,5 +9,5 @@ private:
 
 public:
     GameManager();
-    void Start();
+    void Run();
 };

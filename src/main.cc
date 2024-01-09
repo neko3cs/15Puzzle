@@ -3,8 +3,7 @@
 int main(int argc, char const *argv[])
 {
     GameManager gameManager;
-
-    gameManager.Start();
+    gameManager.Run();
 
     return 0;
 }
