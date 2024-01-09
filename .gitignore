@@ -47,4 +47,4 @@ CTestTestfile.cmake
 _deps
 
 # User .gitignore ---------------------------------------------------
-test/15PuzzleTest
+build
