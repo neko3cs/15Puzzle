@@ -5,7 +5,6 @@ class GameManager
 {
 private:
     Board board;
-    void ShowBoard();
 
 public:
     GameManager();

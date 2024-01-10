@@ -11,6 +11,20 @@ Board::Board()
 {
 }
 
+void Board::Show()
+{
+    for (int i = 0; i < this->GetRow(); i++)
+    {
+        for (int j = 0; j < this->GetColumn(); j++)
+        {
+            std::cout.width(2); // 可視性を上げる
+            std::cout << this->GetPanelByCoord(i, j).ToString() << ' ';
+        }
+        std::cout << std::endl;
+    }
+    std::cout << std::endl;
+}
+
 std::vector<Panel>::iterator Board::GetPanelIterByDirection(Panel panel, MoveDirection direction)
 {
     // TODO: 枠沿いのパネルの当たり判定の実装（移動負荷の場合は入れ替えない）
