@@ -1,4 +1,4 @@
-#include "BoardManager.h"
+#include "Board.h"
 #include "Panel.h"
 #include <iostream>
 #include <list>
@@ -7,11 +7,11 @@
 #include <random>    //default_random_engine()用
 #include <chrono>    //system_clock()用
 
-BoardManager::BoardManager()
+Board::Board()
 {
 }
 
-std::vector<Panel>::iterator BoardManager::GetPanelIterByDirection(Panel panel, MoveDirection direction)
+std::vector<Panel>::iterator Board::GetPanelIterByDirection(Panel panel, MoveDirection direction)
 {
     // TODO: 枠沿いのパネルの当たり判定の実装（移動負荷の場合は入れ替えない）
 
@@ -36,37 +36,38 @@ std::vector<Panel>::iterator BoardManager::GetPanelIterByDirection(Panel panel, 
         throw std::invalid_argument("invalid direction.");
     }
 
-    return std::find_if(board.begin(), board.end(), [&targetX, &targetY](Panel p) { return p.GetGrid().GetX() == targetX && p.GetGrid().GetY() == targetY; });
+    return std::find_if(board.begin(), board.end(), [&targetX, &targetY](Panel p)
+                        { return p.GetGrid().GetX() == targetX && p.GetGrid().GetY() == targetY; });
 }
 
-int BoardManager::GetRow()
+int Board::GetRow()
 {
     return ROW;
 }
 
-int BoardManager::GetColumn()
+int Board::GetColumn()
 {
     return COL;
 }
 
-void BoardManager::Initialize()
+void Board::Initialize()
 {
-    //時間ベースのシードを取得
+    // 時間ベースのシードを取得
     unsigned seed =
         std::chrono::system_clock::now().time_since_epoch().count();
 
-    //仮のコンテナにROW*COL分の数字を格納する
+    // 仮のコンテナにROW*COL分の数字を格納する
     std::vector<int> panelNums;
     for (int num = 1; num <= ROW * COL; num++)
     {
         panelNums.push_back(num);
     }
 
-    //ランダムにシャッフルする
+    // ランダムにシャッフルする
     auto engine = std::default_random_engine(seed);
     shuffle(panelNums.begin(), panelNums.end(), engine);
 
-    //仮コンテナのシャッフルした数字をボードに並べる
+    // 仮コンテナのシャッフルした数字をボードに並べる
     for (int x = 0; x < ROW; x++)
     {
         for (int y = 0; y < COL; y++)
@@ -78,14 +79,15 @@ void BoardManager::Initialize()
     }
 }
 
-Panel BoardManager::GetPanelByCoord(int x, int y)
+Panel Board::GetPanelByCoord(int x, int y)
 {
     return board[x * ROW + y];
 }
 
-void BoardManager::MovePanel(MoveDirection direction)
+void Board::MovePanel(MoveDirection direction)
 {
-    auto hiddenPanelIter = std::find_if(board.begin(), board.end(), [](Panel p) { return p.IsHidden(); });
+    auto hiddenPanelIter = std::find_if(board.begin(), board.end(), [](Panel p)
+                                        { return p.IsHidden(); });
     auto changePanelIter = this->GetPanelIterByDirection(*hiddenPanelIter, direction);
     std::iter_swap(hiddenPanelIter, changePanelIter);
 }

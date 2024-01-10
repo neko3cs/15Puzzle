@@ -13,7 +13,7 @@ add_executable(
     15PuzzleTest
     GridTest.cc
     PanelTest.cc
-    BoardManagerTest.cc
+    BoardTest.cc
 )
 # gtest_add_tests(
 #     TARGET

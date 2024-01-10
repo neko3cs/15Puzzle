@@ -1,10 +1,10 @@
 #pragma once
-#include "BoardManager.h"
+#include "Board.h"
 
 class GameManager
 {
 private:
-    BoardManager boardManager;
+    Board board;
     void ShowBoard();
 
 public:

@@ -3,7 +3,7 @@
 #include "Panel.h"
 #include "MoveDirection.h"
 
-class BoardManager
+class Board
 {
 private:
 	const int ROW = 4;
@@ -12,7 +12,7 @@ private:
 	std::vector<Panel>::iterator GetPanelIterByDirection(Panel panel, MoveDirection direction);
 
 public:
-	BoardManager();
+	Board();
 	int GetRow();
 	int GetColumn();
 	void Initialize();
