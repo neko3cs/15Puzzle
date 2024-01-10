@@ -13,9 +13,9 @@ Board::Board()
 
 void Board::Show()
 {
-    for (int i = 0; i < this->GetRow(); i++)
+    for (int i = 0; i < ROW; i++)
     {
-        for (int j = 0; j < this->GetColumn(); j++)
+        for (int j = 0; j < COL; j++)
         {
             std::cout.width(2); // 可視性を上げる
             std::cout << this->GetPanelByCoord(i, j).ToString() << ' ';
@@ -52,16 +52,6 @@ std::vector<Panel>::iterator Board::GetPanelIterByDirection(Panel panel, MoveDir
 
     return std::find_if(board.begin(), board.end(), [&targetX, &targetY](Panel p)
                         { return p.GetGrid().GetX() == targetX && p.GetGrid().GetY() == targetY; });
-}
-
-int Board::GetRow()
-{
-    return ROW;
-}
-
-int Board::GetColumn()
-{
-    return COL;
 }
 
 void Board::Initialize()

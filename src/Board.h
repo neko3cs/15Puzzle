@@ -13,8 +13,6 @@ private:
 
 public:
 	Board();
-	int GetRow();
-	int GetColumn();
 	void Initialize();
 	void Show();
 	Panel GetPanelByCoord(int x, int y);
