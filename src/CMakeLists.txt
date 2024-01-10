@@ -5,5 +5,5 @@ add_library(
     ./Grid.cc
     ./Panel.cc
     ./Board.cc
-    ./GameManager.cc
+    ./FifteenPuzzle.cc
 )

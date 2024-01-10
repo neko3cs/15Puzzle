@@ -1,12 +1,12 @@
-#include "GameManager.h"
+#include "FifteenPuzzle.h"
 #include <iostream>
 
-GameManager::GameManager()
+FifteenPuzzle::FifteenPuzzle()
 {
     board.Initialize();
 }
 
-void GameManager::Run()
+void FifteenPuzzle::Run()
 {
     while (true)
     {

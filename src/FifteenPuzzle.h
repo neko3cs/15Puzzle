@@ -1,12 +1,12 @@
 #pragma once
 #include "Board.h"
 
-class GameManager
+class FifteenPuzzle
 {
 private:
     Board board;
 
 public:
-    GameManager();
+    FifteenPuzzle();
     void Run();
 };

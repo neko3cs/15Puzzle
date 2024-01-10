@@ -1,9 +1,9 @@
-#include "GameManager.h"
+#include "FifteenPuzzle.h"
 
 int main(int argc, char const *argv[])
 {
-    GameManager gameManager;
-    gameManager.Run();
+    FifteenPuzzle fifteenPuzzle;
+    fifteenPuzzle.Run();
 
     return 0;
 }
