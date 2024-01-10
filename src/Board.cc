@@ -13,12 +13,12 @@ Board::Board()
 
 Panel Board::GetPanelByCoord(int x, int y)
 {
-    return board[x * ROW + y];
+    return board[x + y * ROW];
 }
 
 std::vector<Panel>::iterator Board::GetPanelIterByDirection(Panel panel, MoveDirection direction)
 {
-    // TODO: 枠沿いのパネルの当たり判定の実装（移動負荷の場合は入れ替えない）
+// TODO: 枠沿いのパネルの当たり判定の実装（移動負荷の場合は入れ替えない）
 
     int targetX = panel.GetGrid().GetX();
     int targetY = panel.GetGrid().GetY();
@@ -63,11 +63,11 @@ void Board::Initialize()
     shuffle(panelNums.begin(), panelNums.end(), engine);
 
     // 仮コンテナのシャッフルした数字をボードに並べる
-    for (int x = 0; x < ROW; x++)
+    for (int x = 0; x < COL; x++)
     {
-        for (int y = 0; y < COL; y++)
+        for (int y = 0; y < ROW; y++)
         {
-            Grid grid(x, y, panelNums.at(x * ROW + y));
+            Grid grid(x, y, panelNums.at(x + y * ROW));
             Panel panel(grid);
             board.push_back(panel);
         }
@@ -76,12 +76,12 @@ void Board::Initialize()
 
 void Board::Show()
 {
-    for (int i = 0; i < ROW; i++)
+    for (int x = 0; x < COL; x++)
     {
-        for (int j = 0; j < COL; j++)
+        for (int y = 0; y < ROW; y++)
         {
             std::cout.width(2); // 可視性を上げる
-            std::cout << this->GetPanelByCoord(i, j).ToString() << ' ';
+            std::cout << this->GetPanelByCoord(x, y).ToString() << ' ';
         }
         std::cout << std::endl;
     }
