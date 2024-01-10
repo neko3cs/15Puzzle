@@ -1,7 +1,7 @@
 #include "Panel.h"
 
 Panel::Panel(Grid grid)
-	: grid(grid)
+		: grid(grid)
 {
 }
 
@@ -19,4 +19,16 @@ Grid Panel::GetGrid()
 bool Panel::IsHidden()
 {
 	return grid.GetNum() == HIDDEN_NUM ? true : false;
+}
+
+void Panel::SwapPanel(Panel dest)
+{
+	auto x = this->GetGrid().GetX();
+	auto y = this->GetGrid().GetY();
+
+	this->GetGrid().SetX(dest.GetGrid().GetX());
+	this->GetGrid().SetY(dest.GetGrid().GetY());
+
+	dest.GetGrid().SetX(x);
+	dest.GetGrid().SetY(y);
 }

@@ -14,4 +14,5 @@ public:
 	std::string ToString();
 	Grid GetGrid();
 	bool IsHidden();
+	void SwapPanel(Panel dest);
 };

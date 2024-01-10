@@ -13,7 +13,7 @@ void FifteenPuzzle::Run()
         board.Show();
 
         char input;
-        std::cout << "Input direction(H: Left, J: Up, K: Down, L: Right) or quit(q, quit): " << std::endl;
+        std::cout << "Input direction(H: Left, J: Up, K: Down, L: Right) or quit(q, quit): " << std::flush;
         std::cin >> input;
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
@@ -24,23 +24,23 @@ void FifteenPuzzle::Run()
         }
         else if (input == 'h' || input == 'H')
         {
-            std::cout << "Direction is Left" << std::endl;
-        }
-        else if (input == 'j' || input == 'J')
-        {
-            std::cout << "Direction is Up" << std::endl;
-        }
-        else if (input == 'k' || input == 'K')
-        {
-            std::cout << "Direction is Down" << std::endl;
+            board.MovePanel(MoveDirection::Left);
         }
         else if (input == 'l' || input == 'L')
         {
-            std::cout << "Direction is Right" << std::endl;
+            board.MovePanel(MoveDirection::Right);
+        }
+        else if (input == 'j' || input == 'J')
+        {
+            board.MovePanel(MoveDirection::Up);
+        }
+        else if (input == 'k' || input == 'K')
+        {
+            board.MovePanel(MoveDirection::Down);
         }
         else
         {
-            std::cout << "Input char is: " << input << std::endl;
+            std::cout << "Invalid character was inputted: " << input << std::endl;
         }
     }
 }

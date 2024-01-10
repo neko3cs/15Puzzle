@@ -18,24 +18,22 @@ Panel Board::GetPanelByCoord(int x, int y)
 
 std::vector<Panel>::iterator Board::GetPanelIterByDirection(Panel panel, MoveDirection direction)
 {
-// TODO: 枠沿いのパネルの当たり判定の実装（移動負荷の場合は入れ替えない）
-
     int targetX = panel.GetGrid().GetX();
     int targetY = panel.GetGrid().GetY();
 
     switch (direction)
     {
-    case MoveDirection::Up:
+    case MoveDirection::Left:
         targetX -= 1;
         break;
     case MoveDirection::Right:
-        targetY += 1;
-        break;
-    case MoveDirection::Down:
         targetX += 1;
         break;
-    case MoveDirection::Left:
+    case MoveDirection::Up:
         targetY -= 1;
+        break;
+    case MoveDirection::Down:
+        targetY += 1;
         break;
     default:
         throw std::invalid_argument("invalid direction.");
@@ -93,5 +91,14 @@ void Board::MovePanel(MoveDirection direction)
     auto hiddenPanelIter = std::find_if(board.begin(), board.end(), [](Panel p)
                                         { return p.IsHidden(); });
     auto changePanelIter = this->GetPanelIterByDirection(*hiddenPanelIter, direction);
+
+    // FIXME: 座標情報がおかしいため正しく動作していない（うまく座標更新できていない？）
+    // DEBUG
+    std::cout << "hidden: " << hiddenPanelIter->GetGrid().GetNum() << "(" << hiddenPanelIter->GetGrid().GetX() << ",";
+    std::cout << hiddenPanelIter->GetGrid().GetY() << "), change: " << changePanelIter->GetGrid().GetNum();
+    std::cout << "(" << changePanelIter->GetGrid().GetX() << "," << changePanelIter->GetGrid().GetY() << ")" << std::endl;
+    // DEBUG
+
     std::iter_swap(hiddenPanelIter, changePanelIter);
+    hiddenPanelIter->SwapPanel(*changePanelIter);
 }
