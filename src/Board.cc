@@ -11,18 +11,9 @@ Board::Board()
 {
 }
 
-void Board::Show()
+Panel Board::GetPanelByCoord(int x, int y)
 {
-    for (int i = 0; i < ROW; i++)
-    {
-        for (int j = 0; j < COL; j++)
-        {
-            std::cout.width(2); // 可視性を上げる
-            std::cout << this->GetPanelByCoord(i, j).ToString() << ' ';
-        }
-        std::cout << std::endl;
-    }
-    std::cout << std::endl;
+    return board[x * ROW + y];
 }
 
 std::vector<Panel>::iterator Board::GetPanelIterByDirection(Panel panel, MoveDirection direction)
@@ -83,9 +74,18 @@ void Board::Initialize()
     }
 }
 
-Panel Board::GetPanelByCoord(int x, int y)
+void Board::Show()
 {
-    return board[x * ROW + y];
+    for (int i = 0; i < ROW; i++)
+    {
+        for (int j = 0; j < COL; j++)
+        {
+            std::cout.width(2); // 可視性を上げる
+            std::cout << this->GetPanelByCoord(i, j).ToString() << ' ';
+        }
+        std::cout << std::endl;
+    }
+    std::cout << std::endl;
 }
 
 void Board::MovePanel(MoveDirection direction)

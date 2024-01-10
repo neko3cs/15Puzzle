@@ -11,7 +11,7 @@ private:
 
 public:
 	Panel(Grid grid);
-	Grid GetGrid();
 	std::string ToString();
+	Grid GetGrid();
 	bool IsHidden();
 };
