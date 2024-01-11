@@ -14,4 +14,5 @@ public:
 	void Initialize();
 	void Show();
 	void MovePanel(MoveDirection direction);
+	bool IsSolved();
 };

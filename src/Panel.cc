@@ -5,6 +5,11 @@ Panel::Panel(int number)
 {
 }
 
+int Panel::GetNumber() const
+{
+	return number;
+}
+
 std::string Panel::ToString()
 {
 	// TODO: いずれは画像を返す

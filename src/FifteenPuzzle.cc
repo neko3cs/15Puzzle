@@ -42,5 +42,12 @@ void FifteenPuzzle::Run()
     {
       std::cout << "Invalid character was inputted: " << input << std::endl;
     }
+
+    if (board.IsSolved())
+    {
+      // パズルが解けたら褒めて終了
+      std::cout << "Congratulations! You solved puzzle!" << std::endl;
+      break;
+    }
   }
 }

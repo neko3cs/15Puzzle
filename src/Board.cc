@@ -86,3 +86,18 @@ void Board::MovePanel(MoveDirection direction)
     std::swap(board[hiddenIndex], board[targetIndex]);
   }
 }
+
+bool Board::IsSolved()
+{
+  auto expected = 1;
+  for (const auto &panel : board)
+  {
+    if (panel.GetNumber() != expected)
+    {
+      return false;
+    }
+    expected++;
+  }
+
+  return true;
+}

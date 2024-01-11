@@ -9,6 +9,7 @@ private:
 
 public:
 	Panel(int number);
+	int GetNumber() const;
 	std::string ToString();
 	bool IsHidden();
 };
