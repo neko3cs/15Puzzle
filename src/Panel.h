@@ -5,7 +5,7 @@ class Panel
 {
 private:
 	int number;
-	int HIDDEN_NUM = 16;
+	static constexpr int HIDDEN_NUM = 16;
 
 public:
 	Panel(int number);
