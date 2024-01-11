@@ -92,5 +92,7 @@
         "unordered_set": "cpp",
         "variant": "cpp"
     },
-    "C_Cpp.errorSquiggles": "enabled"
+    "C_Cpp.errorSquiggles": "enabled",
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true,
 }
