@@ -1,18 +1,14 @@
 #pragma once
-#include "Grid.h"
 #include <string>
 
 class Panel
 {
 private:
-	Panel();
-	int HIDDEN_NUM = 1;
-	Grid grid;
+	int number;
+	int HIDDEN_NUM = 16;
 
 public:
-	Panel(Grid grid);
+	Panel(int number);
 	std::string ToString();
-	Grid GetGrid();
 	bool IsHidden();
-	void SwapPanel(Panel dest);
 };

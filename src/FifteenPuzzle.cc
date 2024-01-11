@@ -3,44 +3,44 @@
 
 FifteenPuzzle::FifteenPuzzle()
 {
-    board.Initialize();
+  board.Initialize();
 }
 
 void FifteenPuzzle::Run()
 {
-    while (true)
+  while (true)
+  {
+    board.Show();
+
+    char input;
+    std::cout << "Input direction(H: Left, J: Up, K: Down, L: Right) or quit(q, quit): " << std::flush;
+    std::cin >> input;
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+    if (input == 'q')
     {
-        board.Show();
-
-        char input;
-        std::cout << "Input direction(H: Left, J: Up, K: Down, L: Right) or quit(q, quit): " << std::flush;
-        std::cin >> input;
-        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-
-        if (input == 'q')
-        {
-            std::cout << "Exit" << std::endl;
-            break;
-        }
-        else if (input == 'h' || input == 'H')
-        {
-            board.MovePanel(MoveDirection::Left);
-        }
-        else if (input == 'l' || input == 'L')
-        {
-            board.MovePanel(MoveDirection::Right);
-        }
-        else if (input == 'j' || input == 'J')
-        {
-            board.MovePanel(MoveDirection::Up);
-        }
-        else if (input == 'k' || input == 'K')
-        {
-            board.MovePanel(MoveDirection::Down);
-        }
-        else
-        {
-            std::cout << "Invalid character was inputted: " << input << std::endl;
-        }
+      std::cout << "Exit" << std::endl;
+      break;
     }
+    else if (input == 'h' || input == 'H')
+    {
+      board.MovePanel(MoveDirection::Left);
+    }
+    else if (input == 'l' || input == 'L')
+    {
+      board.MovePanel(MoveDirection::Right);
+    }
+    else if (input == 'j' || input == 'J')
+    {
+      board.MovePanel(MoveDirection::Up);
+    }
+    else if (input == 'k' || input == 'K')
+    {
+      board.MovePanel(MoveDirection::Down);
+    }
+    else
+    {
+      std::cout << "Invalid character was inputted: " << input << std::endl;
+    }
+  }
 }

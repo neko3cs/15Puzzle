@@ -2,8 +2,8 @@
 
 enum MoveDirection
 {
-    Up,
-    Right,
-    Down,
-    Left
+  Left,
+  Right,
+  Up,
+  Down
 };

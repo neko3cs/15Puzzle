@@ -4,9 +4,9 @@
 class FifteenPuzzle
 {
 private:
-    Board board;
+	Board board;
 
 public:
-    FifteenPuzzle();
-    void Run();
+	FifteenPuzzle();
+	void Run();
 };

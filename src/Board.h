@@ -6,11 +6,8 @@
 class Board
 {
 private:
-	const int ROW = 4;
-	const int COL = 4;
-	std::vector<Panel> board;	
-	Panel GetPanelByCoord(int x, int y);
-	std::vector<Panel>::iterator GetPanelIterByDirection(Panel panel, MoveDirection direction);
+	const int SIZE = 4;
+	std::vector<Panel> board;
 
 public:
 	Board();

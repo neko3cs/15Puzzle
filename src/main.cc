@@ -2,8 +2,8 @@
 
 int main(int argc, char const *argv[])
 {
-    FifteenPuzzle fifteenPuzzle;
-    fifteenPuzzle.Run();
+  FifteenPuzzle fifteenPuzzle;
+  fifteenPuzzle.Run();
 
-    return 0;
+  return 0;
 }

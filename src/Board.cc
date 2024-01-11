@@ -11,94 +11,78 @@ Board::Board()
 {
 }
 
-Panel Board::GetPanelByCoord(int x, int y)
-{
-    return board[x + y * ROW];
-}
-
-std::vector<Panel>::iterator Board::GetPanelIterByDirection(Panel panel, MoveDirection direction)
-{
-    int targetX = panel.GetGrid().GetX();
-    int targetY = panel.GetGrid().GetY();
-
-    switch (direction)
-    {
-    case MoveDirection::Left:
-        targetX -= 1;
-        break;
-    case MoveDirection::Right:
-        targetX += 1;
-        break;
-    case MoveDirection::Up:
-        targetY -= 1;
-        break;
-    case MoveDirection::Down:
-        targetY += 1;
-        break;
-    default:
-        throw std::invalid_argument("invalid direction.");
-    }
-
-    return std::find_if(board.begin(), board.end(), [&targetX, &targetY](Panel p)
-                        { return p.GetGrid().GetX() == targetX && p.GetGrid().GetY() == targetY; });
-}
-
 void Board::Initialize()
 {
-    // 時間ベースのシードを取得
-    unsigned seed =
-        std::chrono::system_clock::now().time_since_epoch().count();
+  // 時間ベースのシードを取得
+  unsigned seed =
+      std::chrono::system_clock::now().time_since_epoch().count();
 
-    // 仮のコンテナにROW*COL分の数字を格納する
-    std::vector<int> panelNums;
-    for (int num = 1; num <= ROW * COL; num++)
+  // 仮のコンテナにSIZE*SIZE分の数字を格納する
+  std::vector<int> numbers;
+  for (int num = 1; num <= SIZE * SIZE; num++)
+  {
+    numbers.push_back(num);
+  }
+
+  // ランダムにシャッフルする
+  auto engine = std::default_random_engine(seed);
+  std::shuffle(numbers.begin(), numbers.end(), engine);
+
+  // 仮コンテナのシャッフルした数字をボードに並べる
+  for (int x = 0; x < SIZE; x++)
+  {
+    for (int y = 0; y < SIZE; y++)
     {
-        panelNums.push_back(num);
+      Panel panel(numbers[x * SIZE + y]);
+      board.push_back(panel);
     }
-
-    // ランダムにシャッフルする
-    auto engine = std::default_random_engine(seed);
-    shuffle(panelNums.begin(), panelNums.end(), engine);
-
-    // 仮コンテナのシャッフルした数字をボードに並べる
-    for (int x = 0; x < COL; x++)
-    {
-        for (int y = 0; y < ROW; y++)
-        {
-            Grid grid(x, y, panelNums.at(x + y * ROW));
-            Panel panel(grid);
-            board.push_back(panel);
-        }
-    }
+  }
 }
 
 void Board::Show()
 {
-    for (int x = 0; x < COL; x++)
+  for (int x = 0; x < SIZE; x++)
+  {
+    for (int y = 0; y < SIZE; y++)
     {
-        for (int y = 0; y < ROW; y++)
-        {
-            std::cout.width(2); // 可視性を上げる
-            std::cout << this->GetPanelByCoord(x, y).ToString() << ' ';
-        }
-        std::cout << std::endl;
+      std::cout.width(2); // 可視性を上げる
+      std::cout << board[x * SIZE + y].ToString() << ' ';
     }
     std::cout << std::endl;
+  }
+  std::cout << std::endl;
 }
 
 void Board::MovePanel(MoveDirection direction)
 {
-    auto hiddenPanelIter = std::find_if(board.begin(), board.end(), [](Panel p)
-                                        { return p.IsHidden(); });
-    auto changePanelIter = this->GetPanelIterByDirection(*hiddenPanelIter, direction);
+  auto hidden = std::find_if(board.begin(), board.end(), [](Panel p)
+                             { return p.IsHidden(); });
+  auto hiddenIndex = std::distance(board.begin(), hidden);
 
-    // FIXME: 座標情報がおかしいため正しく動作していない（うまく座標更新できていない？）
-    // DEBUG
-    std::cout << "hidden: " << hiddenPanelIter->GetGrid().GetNum() << "(" << hiddenPanelIter->GetGrid().GetX() << ",";
-    std::cout << hiddenPanelIter->GetGrid().GetY() << "), change: " << changePanelIter->GetGrid().GetNum();
-    std::cout << "(" << changePanelIter->GetGrid().GetX() << "," << changePanelIter->GetGrid().GetY() << ")" << std::endl;
-    // DEBUG
+  auto targetIndex = -1;
+  switch (direction)
+  {
+  case MoveDirection::Left:
+    targetIndex = hiddenIndex - 1;
+    break;
+  case MoveDirection::Right:
+    targetIndex = hiddenIndex + 1;
+    break;
+  case MoveDirection::Up:
+    targetIndex = hiddenIndex - SIZE;
+    break;
+  case MoveDirection::Down:
+    targetIndex = hiddenIndex + SIZE;
+    break;
+  default:
+    throw std::invalid_argument("invalid direction.");
+  }
 
-    std::iter_swap(hiddenPanelIter, changePanelIter);
-    hiddenPanelIter->SwapPanel(*changePanelIter);
+  if (targetIndex >= 0 &&                            // 左上端を突き抜けないこと
+      targetIndex < SIZE * SIZE &&                   // 右下端を突き抜けないこと
+      ((hiddenIndex / SIZE == targetIndex / SIZE) || // 同行に存在すること
+       (hiddenIndex % SIZE == targetIndex % SIZE)))  // 同列に存在すること
+  {
+    std::swap(board[hiddenIndex], board[targetIndex]);
+  }
 }

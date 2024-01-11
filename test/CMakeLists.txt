@@ -11,7 +11,6 @@ include_directories(
 
 add_executable(
     15PuzzleTest
-    GridTest.cc
     PanelTest.cc
     BoardTest.cc
 )
