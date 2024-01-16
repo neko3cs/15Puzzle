@@ -2,10 +2,40 @@
 #include <iostream>
 #include <GLUT/glut.h>
 
+void drawGrid()
+{
+  glColor3f(0.0f, 0.0f, 0.0f);
+
+  for (int i = 1; i < 6; i++)
+  {
+    glBegin(GL_LINES);
+    glVertex2f(i, 1);
+    glVertex2f(i, 5);
+    glEnd();
+  }
+  for (int i = 1; i < 6; i++)
+  {
+    glBegin(GL_LINES);
+    glVertex2f(1, i);
+    glVertex2f(5, i);
+    glEnd();
+  }
+}
+
 void display()
 {
   glClear(GL_COLOR_BUFFER_BIT);
+  drawGrid();
   glFlush();
+}
+
+void reshape(int width, int height)
+{
+  glViewport(0, 0, width, height);
+  glMatrixMode(GL_PROJECTION);
+  glLoadIdentity();
+  gluOrtho2D(0, 6, 0, 6);
+  glMatrixMode(GL_MODELVIEW);
 }
 
 void handleKeyboard(unsigned char key, int x, int y)
@@ -54,8 +84,9 @@ void initGL()
       (glutGet(GLUT_SCREEN_WIDTH) - windowWidth) / 2,
       (glutGet(GLUT_SCREEN_HEIGHT) - windowHeight) / 2);
   glutCreateWindow("15 Puzzle");
-  glClearColor(1.0, 1.0, 1.0, 1.0);
+  glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
   glutDisplayFunc(display);
+  glutReshapeFunc(reshape);
   glutKeyboardFunc(handleKeyboard);
   glutSpecialFunc(handleSpecialKey);
 }
