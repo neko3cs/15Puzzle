@@ -10,12 +10,12 @@ add_definitions(-Wno-deprecated-declarations)
 find_package(OpenGL REQUIRED)
 find_package(glfw3 REQUIRED)
 
-add_subdirectory(src)
-add_subdirectory(test)
-
 add_executable(
     a.out
     src/main.cc
+    src/FifteenPuzzle.cc
+    src/Board.cc
+    src/Panel.cc
 )
 target_include_directories(
     a.out
@@ -25,7 +25,6 @@ target_include_directories(
 )
 target_link_libraries(
     a.out
-    15Puzzle
     ${OPENGL_LIBRARIES}
     glfw # ${GLFW_LIBRARIES}だとfind_packageでうまく設定されてないようでエラーする
 )
