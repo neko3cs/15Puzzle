@@ -11,31 +11,39 @@ void FifteenPuzzle::handleKeyboard(GLFWwindow *window, int key, int scancode, in
 {
   if (action == GLFW_PRESS || action == GLFW_REPEAT)
   {
-    switch (key)
+    const char *keyName = glfwGetKeyName(key, scancode);
+    if (keyName || key == GLFW_KEY_LEFT || key == GLFW_KEY_RIGHT || key == GLFW_KEY_UP || key == GLFW_KEY_DOWN)
     {
-    case GLFW_KEY_Q:
-      std::cout << "Exit" << std::endl;
-      glfwSetWindowShouldClose(window, GLFW_TRUE);
-      break;
-    case GLFW_KEY_LEFT:
-      std::cout << "left key input!" << std::endl;
-      // board.MovePanel(MoveDirection::Left);  // FIXME: staticメンバ関数だからインスタンスのメンバ変数を呼べない
-      break;
-    case GLFW_KEY_RIGHT:
-      std::cout << "right key input!" << std::endl;
-      // board.MovePanel(MoveDirection::Right);  // FIXME: staticメンバ関数だからインスタンスのメンバ変数を呼べない
-      break;
-    case GLFW_KEY_UP:
-      std::cout << "up key input!" << std::endl;
-      // board.MovePanel(MoveDirection::Up);  // FIXME: staticメンバ関数だからインスタンスのメンバ変数を呼べない
-      break;
-    case GLFW_KEY_DOWN:
-      std::cout << "down key input!" << std::endl;
-      // board.MovePanel(MoveDirection::Down);  // FIXME: staticメンバ関数だからインスタンスのメンバ変数を呼べない
-      break;
-    default:
-      std::cout << "Invalid character was inputted: " << glfwGetKeyName(key, scancode) << std::endl;
-      break;
+      switch (key)
+      {
+      case GLFW_KEY_Q:
+        std::cout << "ゲームを終了します。" << std::endl;
+        glfwSetWindowShouldClose(window, GLFW_TRUE);
+        break;
+      case GLFW_KEY_LEFT:
+        std::cout << "左キーが入力されました。" << std::endl;
+        // board.MovePanel(MoveDirection::Left);  // FIXME: staticメンバ関数だからインスタンスのメンバ変数を呼べない
+        break;
+      case GLFW_KEY_RIGHT:
+        std::cout << "右キーが入力されました。" << std::endl;
+        // board.MovePanel(MoveDirection::Right);  // FIXME: staticメンバ関数だからインスタンスのメンバ変数を呼べない
+        break;
+      case GLFW_KEY_UP:
+        std::cout << "上キーが入力されました。" << std::endl;
+        // board.MovePanel(MoveDirection::Up);  // FIXME: staticメンバ関数だからインスタンスのメンバ変数を呼べない
+        break;
+      case GLFW_KEY_DOWN:
+        std::cout << "下キーが入力されました。" << std::endl;
+        // board.MovePanel(MoveDirection::Down);  // FIXME: staticメンバ関数だからインスタンスのメンバ変数を呼べない
+        break;
+      default:
+        std::cout << "無効な文字が入力されました。: " << keyName << std::endl;
+        break;
+      }
+    }
+    else
+    {
+      std::cout << "無効なキーが入力されました。" << std::endl;
     }
   }
 }
