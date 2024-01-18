@@ -6,11 +6,14 @@ class FifteenPuzzle
 {
 private:
 	Board board;
+	FifteenPuzzle();
+	FifteenPuzzle(const FifteenPuzzle &) = delete;
+	FifteenPuzzle &operator=(const FifteenPuzzle &) = delete;
 	static void handleKeyboard(GLFWwindow *window, int key, int scancode, int action, int mods);
 	static void reshape(GLFWwindow *window, int width, int height);
 	static void drawGrid();
 
 public:
-	FifteenPuzzle();
+	static FifteenPuzzle &GetInstance();
 	void Run();
 };

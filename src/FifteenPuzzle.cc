@@ -22,19 +22,19 @@ void FifteenPuzzle::handleKeyboard(GLFWwindow *window, int key, int scancode, in
         break;
       case GLFW_KEY_LEFT:
         std::cout << "左キーが入力されました。" << std::endl;
-        // board.MovePanel(MoveDirection::Left);  // FIXME: staticメンバ関数だからインスタンスのメンバ変数を呼べない
+        GetInstance().board.MovePanel(MoveDirection::Left);
         break;
       case GLFW_KEY_RIGHT:
         std::cout << "右キーが入力されました。" << std::endl;
-        // board.MovePanel(MoveDirection::Right);  // FIXME: staticメンバ関数だからインスタンスのメンバ変数を呼べない
+        GetInstance().board.MovePanel(MoveDirection::Right); 
         break;
       case GLFW_KEY_UP:
         std::cout << "上キーが入力されました。" << std::endl;
-        // board.MovePanel(MoveDirection::Up);  // FIXME: staticメンバ関数だからインスタンスのメンバ変数を呼べない
+        GetInstance().board.MovePanel(MoveDirection::Up); 
         break;
       case GLFW_KEY_DOWN:
         std::cout << "下キーが入力されました。" << std::endl;
-        // board.MovePanel(MoveDirection::Down);  // FIXME: staticメンバ関数だからインスタンスのメンバ変数を呼べない
+        GetInstance().board.MovePanel(MoveDirection::Down); 
         break;
       default:
         std::cout << "無効な文字が入力されました。: " << keyName << std::endl;
@@ -75,6 +75,12 @@ void FifteenPuzzle::drawGrid()
     glVertex2f(5, i);
     glEnd();
   }
+}
+
+FifteenPuzzle &FifteenPuzzle::GetInstance()
+{
+  static FifteenPuzzle instance;
+  return instance;
 }
 
 void FifteenPuzzle::Run()

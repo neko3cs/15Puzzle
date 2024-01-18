@@ -3,7 +3,6 @@
 
 int main()
 {
-  FifteenPuzzle fifteenPuzzle;
-  fifteenPuzzle.Run();
+  FifteenPuzzle::GetInstance().Run();
   return 0;
 }
