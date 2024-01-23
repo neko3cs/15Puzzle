@@ -90,7 +90,8 @@
         "source_location": "cpp",
         "thread": "cpp",
         "unordered_set": "cpp",
-        "variant": "cpp"
+        "variant": "cpp",
+        "*.def": "cpp"
     },
     "C_Cpp.errorSquiggles": "enabled",
     "editor.tabSize": 2,

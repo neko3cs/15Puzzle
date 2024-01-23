@@ -26,15 +26,15 @@ void FifteenPuzzle::HandleKeyboard(GLFWwindow *window, int key, int scancode, in
         break;
       case GLFW_KEY_RIGHT:
         std::cout << "右キーが入力されました。" << std::endl;
-        GetInstance().board.MovePanel(MoveDirection::Right); 
+        GetInstance().board.MovePanel(MoveDirection::Right);
         break;
       case GLFW_KEY_UP:
         std::cout << "上キーが入力されました。" << std::endl;
-        GetInstance().board.MovePanel(MoveDirection::Up); 
+        GetInstance().board.MovePanel(MoveDirection::Up);
         break;
       case GLFW_KEY_DOWN:
         std::cout << "下キーが入力されました。" << std::endl;
-        GetInstance().board.MovePanel(MoveDirection::Down); 
+        GetInstance().board.MovePanel(MoveDirection::Down);
         break;
       default:
         std::cout << "無効な文字が入力されました。: " << keyName << std::endl;
@@ -57,23 +57,34 @@ void FifteenPuzzle::Reshape(GLFWwindow *window, int width, int height)
   glMatrixMode(GL_MODELVIEW);
 }
 
+void FifteenPuzzle::DrawPanel(int x1, int y1, int x2, int y2)
+{
+  glLineWidth(3.0f);
+  glBegin(GL_LINE_LOOP);
+  glVertex2i(x1, y1);
+  glVertex2i(x2, y1);
+  glVertex2i(x2, y2);
+  glVertex2i(x1, y2);
+  glEnd();
+}
+
+// TODO: 多分Boardクラスの責務
 void FifteenPuzzle::DrawGrid()
 {
-  glColor3f(0.0f, 0.0f, 0.0f);
-
-  for (int i = 1; i < 6; i++)
+  glColor4f(0.0f, 0.0f, 0.0f, 1.0f);
+  constexpr int startCoordX = 160;
+  constexpr int startCoordY = 30;
+  constexpr int panelSize = 80;
+  for (auto row = 0; row < 4; row++)
   {
-    glBegin(GL_LINES);
-    glVertex2f(i, 1);
-    glVertex2f(i, 5);
-    glEnd();
-  }
-  for (int i = 1; i < 6; i++)
-  {
-    glBegin(GL_LINES);
-    glVertex2f(1, i);
-    glVertex2f(5, i);
-    glEnd();
+    for (auto col = 0; col < 4; col++)
+    {
+      DrawPanel(
+          startCoordX + row * panelSize,
+          startCoordY + col * panelSize,
+          startCoordX + row * panelSize + panelSize,
+          startCoordY + col * panelSize + panelSize);
+    }
   }
 }
 
@@ -91,7 +102,7 @@ void FifteenPuzzle::Run()
     return;
   }
 
-  GLFWwindow *window = glfwCreateWindow(640, 480, "15 Puzzle", nullptr, nullptr);
+  GLFWwindow *window = glfwCreateWindow(WindowWidth, WindowHeight, "15 Puzzle", nullptr, nullptr);
   if (!window)
   {
     std::cerr << "Failed to create GLFW window" << std::endl;
@@ -103,7 +114,7 @@ void FifteenPuzzle::Run()
   glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
   glMatrixMode(GL_PROJECTION);
   glLoadIdentity();
-  glOrtho(0, 6, 0, 6, -1, 1);
+  glOrtho(0, WindowWidth, WindowHeight, 0, -1, 1);
   glMatrixMode(GL_MODELVIEW);
 
   glfwSetKeyCallback(window, HandleKeyboard);
