@@ -7,7 +7,7 @@ FifteenPuzzle::FifteenPuzzle()
   board.Initialize();
 }
 
-void FifteenPuzzle::handleKeyboard(GLFWwindow *window, int key, int scancode, int action, int mods)
+void FifteenPuzzle::HandleKeyboard(GLFWwindow *window, int key, int scancode, int action, int mods)
 {
   if (action == GLFW_PRESS || action == GLFW_REPEAT)
   {
@@ -48,7 +48,7 @@ void FifteenPuzzle::handleKeyboard(GLFWwindow *window, int key, int scancode, in
   }
 }
 
-void FifteenPuzzle::reshape(GLFWwindow *window, int width, int height)
+void FifteenPuzzle::Reshape(GLFWwindow *window, int width, int height)
 {
   glViewport(0, 0, width, height);
   glMatrixMode(GL_PROJECTION);
@@ -57,7 +57,7 @@ void FifteenPuzzle::reshape(GLFWwindow *window, int width, int height)
   glMatrixMode(GL_MODELVIEW);
 }
 
-void FifteenPuzzle::drawGrid()
+void FifteenPuzzle::DrawGrid()
 {
   glColor3f(0.0f, 0.0f, 0.0f);
 
@@ -106,14 +106,14 @@ void FifteenPuzzle::Run()
   glOrtho(0, 6, 0, 6, -1, 1);
   glMatrixMode(GL_MODELVIEW);
 
-  glfwSetKeyCallback(window, handleKeyboard);
-  glfwSetWindowSizeCallback(window, reshape);
+  glfwSetKeyCallback(window, HandleKeyboard);
+  glfwSetWindowSizeCallback(window, Reshape);
   glfwSetInputMode(window, GLFW_STICKY_KEYS, GLFW_TRUE);
 
   while (!glfwWindowShouldClose(window))
   {
     glClear(GL_COLOR_BUFFER_BIT);
-    drawGrid();
+    DrawGrid();
 
     // board.Show(); // FIXME: GUIで実装する
 

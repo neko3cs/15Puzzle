@@ -9,9 +9,9 @@ private:
 	FifteenPuzzle();
 	FifteenPuzzle(const FifteenPuzzle &) = delete;
 	FifteenPuzzle &operator=(const FifteenPuzzle &) = delete;
-	static void handleKeyboard(GLFWwindow *window, int key, int scancode, int action, int mods);
-	static void reshape(GLFWwindow *window, int width, int height);
-	static void drawGrid();
+	static void HandleKeyboard(GLFWwindow *window, int key, int scancode, int action, int mods);
+	static void Reshape(GLFWwindow *window, int width, int height);
+	static void DrawGrid();
 
 public:
 	static FifteenPuzzle &GetInstance();
