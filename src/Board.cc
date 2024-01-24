@@ -75,7 +75,7 @@ void Board::MovePanel(MoveDirection direction)
     targetIndex = hiddenIndex + SIZE;
     break;
   default:
-    throw std::invalid_argument("invalid direction.");
+    throw std::invalid_argument("無効な方向が引き渡されました。");
   }
 
   if (targetIndex >= 0 &&                            // 左上端を突き抜けないこと

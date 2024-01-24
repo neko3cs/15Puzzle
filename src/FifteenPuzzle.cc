@@ -90,26 +90,19 @@ void FifteenPuzzle::DrawGrid()
   }
 }
 
-FifteenPuzzle &FifteenPuzzle::GetInstance()
-{
-  static FifteenPuzzle instance;
-  return instance;
-}
-
-void FifteenPuzzle::Run()
+GLFWwindow *FifteenPuzzle::InitGL()
 {
   if (!glfwInit())
   {
-    std::cerr << "Failed to initialize GLFW" << std::endl;
-    return;
+    std::cerr << "GLFWの初期化に失敗しました。" << std::endl;
+    std::terminate();
   }
-
   GLFWwindow *window = glfwCreateWindow(WindowWidth, WindowHeight, "15 Puzzle", nullptr, nullptr);
   if (!window)
   {
-    std::cerr << "Failed to create GLFW window" << std::endl;
+    std::cerr << "GLFWウィンドウの作成に失敗しました。" << std::endl;
     glfwTerminate();
-    return;
+    std::terminate();
   }
 
   glfwMakeContextCurrent(window);
@@ -118,24 +111,40 @@ void FifteenPuzzle::Run()
   glLoadIdentity();
   glOrtho(0, WindowWidth, WindowHeight, 0, -1, 1);
   glMatrixMode(GL_MODELVIEW);
-
-  FT_Library ft;
-  FT_Face face;
-  if (FT_Init_FreeType(&ft))
-  {
-    std::cerr << "Failed to initialize FreeType Library" << std::endl;
-    return;
-  }
-  if (FT_New_Face(ft, "/System/Library/Fonts/Helvetica.ttc", 0, &face))
-  {
-    std::cerr << "Failed to create FreeType Face" << std::endl;
-    return;
-  }
-  FT_Set_Pixel_Sizes(face, 0, 48 /* px */);
-
   glfwSetKeyCallback(window, HandleKeyboard);
   glfwSetWindowSizeCallback(window, Reshape);
   glfwSetInputMode(window, GLFW_STICKY_KEYS, GLFW_TRUE);
+
+  return window;
+}
+
+void FifteenPuzzle::LoadFont(FT_Library &library, FT_Face &face)
+{
+  if (FT_Init_FreeType(&library))
+  {
+    std::cerr << "FreeTypeの初期化に失敗しました。" << std::endl;
+    std::terminate();
+  }
+  if (FT_New_Face(library, FontPath.c_str(), 0, &face))
+  {
+    std::cerr << "FreeType Faceの作成に失敗しました。" << std::endl;
+    std::terminate();
+  }
+  FT_Set_Pixel_Sizes(face, 0, 48 /* px */);
+}
+
+FifteenPuzzle &FifteenPuzzle::GetInstance()
+{
+  static FifteenPuzzle instance;
+  return instance;
+}
+
+void FifteenPuzzle::Run()
+{
+  auto *window = InitGL();
+  FT_Library library;
+  FT_Face face;
+  LoadFont(library, face);
 
   while (!glfwWindowShouldClose(window))
   {
@@ -147,7 +156,7 @@ void FifteenPuzzle::Run()
     if (board.IsSolved())
     {
       // パズルが解けたら褒めて終了
-      std::cout << "Congratulations! You solved puzzle!" << std::endl;
+      std::cout << "おめでとうございます！パズルが解けました！" << std::endl;
       glfwSetWindowShouldClose(window, GLFW_TRUE);
     }
 
@@ -156,6 +165,6 @@ void FifteenPuzzle::Run()
   }
 
   FT_Done_Face(face);
-  FT_Done_FreeType(ft);
+  FT_Done_FreeType(library);
   glfwTerminate();
 }
