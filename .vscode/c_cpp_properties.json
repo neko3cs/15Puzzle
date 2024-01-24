@@ -4,7 +4,8 @@
             "name": "Mac",
             "includePath": [
                 "${workspaceFolder}/**",
-                "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/**"
+                "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/**",
+                "/usr/local/Cellar/freetype/2.13.2/include/freetype2"
             ],
             "defines": [],
             "macFrameworkPath": [],

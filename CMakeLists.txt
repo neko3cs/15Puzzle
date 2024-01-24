@@ -9,6 +9,7 @@ add_definitions(-Wno-deprecated-declarations)
 
 find_package(OpenGL REQUIRED)
 find_package(glfw3 REQUIRED)
+find_package(Freetype REQUIRED)
 
 add_executable(
     a.out
@@ -22,9 +23,11 @@ target_include_directories(
     PRIVATE
         ${OPENGL_INCLUDE_DIR}
         ${GLFW_INCLUDE_DIRS}
+        ${FREETYPE_INCLUDE_DIRS}
 )
 target_link_libraries(
     a.out
     ${OPENGL_LIBRARIES}
     glfw # ${GLFW_LIBRARIES}だとfind_packageでうまく設定されてないようでエラーする
+    ${FREETYPE_LIBRARIES}
 )

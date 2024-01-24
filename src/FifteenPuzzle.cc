@@ -1,6 +1,8 @@
 #include "FifteenPuzzle.h"
 #include <iostream>
 #include <GLFW/glfw3.h>
+#include <ft2build.h>
+#include FT_FREETYPE_H
 
 FifteenPuzzle::FifteenPuzzle()
 {
@@ -117,6 +119,20 @@ void FifteenPuzzle::Run()
   glOrtho(0, WindowWidth, WindowHeight, 0, -1, 1);
   glMatrixMode(GL_MODELVIEW);
 
+  FT_Library ft;
+  FT_Face face;
+  if (FT_Init_FreeType(&ft))
+  {
+    std::cerr << "Failed to initialize FreeType Library" << std::endl;
+    return;
+  }
+  if (FT_New_Face(ft, "/System/Library/Fonts/Helvetica.ttc", 0, &face))
+  {
+    std::cerr << "Failed to create FreeType Face" << std::endl;
+    return;
+  }
+  FT_Set_Pixel_Sizes(face, 0, 48 /* px */);
+
   glfwSetKeyCallback(window, HandleKeyboard);
   glfwSetWindowSizeCallback(window, Reshape);
   glfwSetInputMode(window, GLFW_STICKY_KEYS, GLFW_TRUE);
@@ -139,5 +155,7 @@ void FifteenPuzzle::Run()
     glfwPollEvents();
   }
 
+  FT_Done_Face(face);
+  FT_Done_FreeType(ft);
   glfwTerminate();
 }
