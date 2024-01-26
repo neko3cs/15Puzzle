@@ -21,6 +21,7 @@ private:
 	static void DrawGrid();
 	GLFWwindow *InitGL();
 	void LoadFont(FT_Library &library, FT_Face &face);
+	void RenderText(FT_Face &face, const char *text, GLint x, GLint y);
 
 public:
 	static FifteenPuzzle &GetInstance();

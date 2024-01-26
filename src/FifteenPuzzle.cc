@@ -133,6 +133,54 @@ void FifteenPuzzle::LoadFont(FT_Library &library, FT_Face &face)
   FT_Set_Pixel_Sizes(face, 0, 48 /* px */);
 }
 
+// FIXME: エラーなく動くが、文字列は描画されない...
+void FifteenPuzzle::RenderText(FT_Face &face, const char *text, GLint x, GLint y)
+{
+  unsigned int penX = static_cast<unsigned int>(x);
+  unsigned int penY = static_cast<unsigned int>(y);
+  for (auto textIndex = 0; textIndex < strlen(text); textIndex++)
+  {
+    auto glyphIndex = FT_Get_Char_Index(face, text[textIndex]);
+    if (FT_Load_Glyph(face, glyphIndex, FT_LOAD_DEFAULT))
+    {
+      continue;
+    }
+    if (FT_Render_Glyph(face->glyph, FT_RENDER_MODE_NORMAL))
+    {
+      continue;
+    }
+
+    // テクスチャ作成
+    unsigned char **tex;
+    tex = (unsigned char **)malloc(sizeof(unsigned char *) * WindowHeight);
+    for (int textureIndex = 0; textureIndex < WindowHeight; ++textureIndex)
+    {
+      tex[textureIndex] = (unsigned char *)malloc(sizeof(unsigned char) * WindowWidth);
+      memset(tex[textureIndex], 0, sizeof(unsigned char) * WindowWidth);
+    }
+    // 文字の描画
+    for (int rowIndex = 0; rowIndex < face->glyph->bitmap.rows; rowIndex++)
+    {
+      unsigned char *src_ptr = face->glyph->bitmap.buffer + rowIndex * face->glyph->bitmap.pitch;
+      unsigned char *dst_ptr = tex[penY + (face->glyph->bitmap.rows - rowIndex - 1)] + penX;
+      for (int pitchIndex = 0; pitchIndex < face->glyph->bitmap.pitch; pitchIndex++)
+      {
+        dst_ptr[pitchIndex] = src_ptr[pitchIndex];
+      }
+    }
+    // メモリの解放
+    for (int textureIndex = 0; textureIndex < WindowHeight; ++textureIndex)
+    {
+      free(tex[textureIndex]);
+    }
+    free(tex);
+
+    // 描画座標の更新
+    penX += face->glyph->advance.x >> 6;
+    penY += face->glyph->advance.y >> 6;
+  }
+}
+
 FifteenPuzzle &FifteenPuzzle::GetInstance()
 {
   static FifteenPuzzle instance;
@@ -150,6 +198,7 @@ void FifteenPuzzle::Run()
   {
     glClear(GL_COLOR_BUFFER_BIT);
     DrawGrid();
+    RenderText(face, "Hello, OpenGL!", 30, 400);
 
     // board.Show(); // FIXME: GUIで実装する
 
