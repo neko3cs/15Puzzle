@@ -25,5 +25,6 @@ private:
 
 public:
 	static FifteenPuzzle &GetInstance();
-	void Run();
+	void RunAsGui();
+	void RunAsCli();
 };

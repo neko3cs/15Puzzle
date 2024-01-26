@@ -1,8 +1,16 @@
 #include "FifteenPuzzle.h"
 #include <iostream>
 
-int main()
+int main(int const argc, char const *argv[])
 {
-  FifteenPuzzle::GetInstance().Run();
+  if (argc == 2 && std::strcmp(argv[1], "--cli") == 0)
+  {
+    FifteenPuzzle::GetInstance().RunAsCli();
+  }
+  else
+  {
+    FifteenPuzzle::GetInstance().RunAsGui();
+  }
+
   return 0;
 }
