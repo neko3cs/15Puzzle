@@ -17,11 +17,11 @@ set(CMAKE_AUTOUIC ON)
 
 add_executable(${PROJECT_NAME}
   src/main.cpp
-  src/MainWindow.cpp
-  src/FifteenPuzzle.cpp
-  src/Board.cpp
-  src/Panel.cpp
-  src/qml.qrc
+  src/views/qml.qrc
+  src/view_models/MainWindow.cpp
+  src/models/FifteenPuzzle.cpp
+  src/models/Board.cpp
+  src/models/Panel.cpp
 )
 target_link_libraries(${PROJECT_NAME}
   PRIVATE

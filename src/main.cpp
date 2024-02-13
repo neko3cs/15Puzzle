@@ -3,8 +3,8 @@
 #include <QQmlContext>
 #include <QQuickStyle>
 #include <iostream>
-#include "FifteenPuzzle.hpp"
-#include "MainWindow.hpp"
+#include "models/FifteenPuzzle.hpp"
+#include "view_models/MainWindow.hpp"
 
 int main(int argc, char *argv[])
 {
