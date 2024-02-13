@@ -8,5 +8,6 @@ private:
 	Board board;
 
 public:
+	FifteenPuzzle();
 	void RunAsCli();
 };
