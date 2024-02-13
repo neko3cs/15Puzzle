@@ -10,7 +10,8 @@ int main(int argc, char *argv[])
 {
   if (argc == 2 && std::strcmp(argv[1], "--cli") == 0)
   {
-    FifteenPuzzle::GetInstance().RunAsCli();
+    FifteenPuzzle puzzle;
+    puzzle.RunAsCli();
     return 0;
   }
   else

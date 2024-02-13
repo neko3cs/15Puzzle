@@ -1,19 +1,9 @@
 #include <iostream>
-#include <QGuiApplication>
-#include <QQmlApplicationEngine>
-#include <QQmlContext>
-#include <QQuickStyle>
 #include "FifteenPuzzle.hpp"
 
 FifteenPuzzle::FifteenPuzzle()
 {
   board.Initialize();
-}
-
-FifteenPuzzle &FifteenPuzzle::GetInstance()
-{
-  static FifteenPuzzle instance;
-  return instance;
 }
 
 void FifteenPuzzle::RunAsCli()
