@@ -1,4 +1,5 @@
 #!/bin/bash
 
-cmake . -B build     # ビルドツリーの作成
-cmake --build build  # ビルド実施
+rm -rf build &&
+cmake . -B build &&
+cmake --build build

@@ -1,16 +1,38 @@
-#include "FifteenPuzzle.h"
+#include <QGuiApplication>
+#include <QQmlApplicationEngine>
+#include <QQmlContext>
+#include <QQuickStyle>
 #include <iostream>
+#include "FifteenPuzzle.h"
+#include "MainWindow.h"
 
-int main(int const argc, char const *argv[])
+int main(int argc, char *argv[])
 {
   if (argc == 2 && std::strcmp(argv[1], "--cli") == 0)
   {
     FifteenPuzzle::GetInstance().RunAsCli();
+    return 0;
   }
   else
   {
-    FifteenPuzzle::GetInstance().RunAsGui();
-  }
+    QGuiApplication app(argc, argv);
 
-  return 0;
+#if defined(Q_OS_MAC)
+    QQuickStyle::setStyle("Material");
+#endif
+
+    MainWindow mainWindow; // engineの前にmainWindowを宣言しないとpropertyがnullだという実行時エラーが出る
+    QQmlApplicationEngine engine;
+    engine.rootContext()->setContextProperty("mainWindow", &mainWindow);
+    QObject::connect(
+        &engine,
+        &QQmlApplicationEngine::objectCreationFailed,
+        &app,
+        []()
+        { QCoreApplication::exit(-1); },
+        Qt::QueuedConnection);
+    engine.load(QUrl(u"qrc:/MainWindow.qml"_qs));
+
+    return app.exec();
+  }
 }

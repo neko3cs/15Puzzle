@@ -1,9 +1,6 @@
 #pragma once
 #include <string>
 #include "Board.h"
-#include <GLFW/glfw3.h>
-#include <ft2build.h>
-#include FT_FREETYPE_H
 
 class FifteenPuzzle
 {
@@ -15,16 +12,8 @@ private:
 	FifteenPuzzle();
 	FifteenPuzzle(const FifteenPuzzle &) = delete;
 	FifteenPuzzle &operator=(const FifteenPuzzle &) = delete;
-	static void HandleKeyboard(GLFWwindow *window, int key, int scancode, int action, int mods);
-	static void Reshape(GLFWwindow *window, int width, int height);
-	static void DrawPanel(int x1, int y1, int x2, int y2);
-	static void DrawGrid();
-	GLFWwindow *InitGL();
-	void LoadFont(FT_Library &library, FT_Face &face);
-	void RenderText(FT_Face &face, const char *text, GLint x, GLint y);
 
 public:
 	static FifteenPuzzle &GetInstance();
-	void RunAsGui();
 	void RunAsCli();
 };
