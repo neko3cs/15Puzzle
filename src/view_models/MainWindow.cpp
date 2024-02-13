@@ -3,26 +3,25 @@
 
 MainWindow::MainWindow()
     : QObject(),
-      m_labelText("文字を入力してボタンを押すと、ここに表示されるよ！")
+      _text("ゲームスタート！")
 {
 }
 
-void MainWindow::updateLabel(const QString text)
+void MainWindow::ResetGame()
 {
-  m_labelText = text;
-  emit textChanged();
+  qDebug() << "MainWindow::ResetGame was called!!";
 }
 
-QString MainWindow::text() const
+QString MainWindow::GetText() const
 {
-  return m_labelText;
+  return _text;
 }
 
-void MainWindow::setText(const QString &text)
+void MainWindow::SetText(const QString &text)
 {
-  if (text != m_labelText)
+  if (text != _text)
   {
-    m_labelText = text;
-    emit textChanged();
+    _text = text;
+    emit TextChanged();
   }
 }

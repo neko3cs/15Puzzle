@@ -5,19 +5,19 @@
 class MainWindow : public QObject
 {
   Q_OBJECT
-  Q_PROPERTY(QString text READ text WRITE setText NOTIFY textChanged)
+  Q_PROPERTY(QString Text READ GetText WRITE SetText NOTIFY TextChanged)
 
 public:
   MainWindow();
 
-  Q_INVOKABLE void updateLabel(const QString text);
+  Q_INVOKABLE void ResetGame();
 
-  QString text() const;
-  void setText(const QString &text);
+  QString GetText() const;
+  void SetText(const QString &text);
 
 signals:
-  void textChanged();
+  void TextChanged();
 
 private:
-  QString m_labelText;
+  QString _text;
 };
