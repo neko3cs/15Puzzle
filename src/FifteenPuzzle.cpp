@@ -3,7 +3,7 @@
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
 #include <QQuickStyle>
-#include "FifteenPuzzle.h"
+#include "FifteenPuzzle.hpp"
 
 FifteenPuzzle::FifteenPuzzle()
 {

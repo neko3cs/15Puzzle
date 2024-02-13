@@ -1,7 +1,7 @@
 #pragma once
 #include <vector>
-#include "Panel.h"
-#include "MoveDirection.h"
+#include "Panel.hpp"
+#include "MoveDirection.hpp"
 
 class Board
 {

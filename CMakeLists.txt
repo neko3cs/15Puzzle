@@ -16,11 +16,11 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
 
 add_executable(${PROJECT_NAME}
-  src/main.cc
-  src/MainWindow.cc
-  src/FifteenPuzzle.cc
-  src/Board.cc
-  src/Panel.cc
+  src/main.cpp
+  src/MainWindow.cpp
+  src/FifteenPuzzle.cpp
+  src/Board.cpp
+  src/Panel.cpp
   src/qml.qrc
 )
 target_link_libraries(${PROJECT_NAME}

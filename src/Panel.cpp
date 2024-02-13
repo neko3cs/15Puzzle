@@ -1,4 +1,4 @@
-#include "Panel.h"
+#include "Panel.hpp"
 
 Panel::Panel(int number)
 		: number(number)

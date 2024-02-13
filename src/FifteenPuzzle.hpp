@@ -1,6 +1,6 @@
 #pragma once
 #include <string>
-#include "Board.h"
+#include "Board.hpp"
 
 class FifteenPuzzle
 {

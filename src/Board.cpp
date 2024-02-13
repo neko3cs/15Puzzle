@@ -1,5 +1,5 @@
-#include "Board.h"
-#include "Panel.h"
+#include "Board.hpp"
+#include "Panel.hpp"
 #include <iostream>
 #include <list>
 #include <vector>

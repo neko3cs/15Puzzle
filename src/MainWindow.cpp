@@ -1,5 +1,5 @@
 #include <QDebug>
-#include "MainWindow.h"
+#include "MainWindow.hpp"
 
 MainWindow::MainWindow()
     : QObject(),
