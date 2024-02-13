@@ -7,6 +7,26 @@ MainWindow::MainWindow()
 {
 }
 
+void MainWindow::MoveHiddenPanelToLeft()
+{
+  qDebug() << "MainWindow::MoveHiddenPanelToLeft was called!!";
+}
+
+void MainWindow::MoveHiddenPanelToRight()
+{
+  qDebug() << "MainWindow::MoveHiddenPanelToRight was called!!";
+}
+
+void MainWindow::MoveHiddenPanelToUp()
+{
+  qDebug() << "MainWindow::MoveHiddenPanelToUp was called!!";
+}
+
+void MainWindow::MoveHiddenPanelToDown()
+{
+  qDebug() << "MainWindow::MoveHiddenPanelToDown was called!!";
+}
+
 void MainWindow::ResetGame()
 {
   qDebug() << "MainWindow::ResetGame was called!!";

@@ -2,10 +2,10 @@ import QtQuick
 import QtQuick.Controls
 
 ApplicationWindow {
-  visible: true
+  title: "15 Puzzle"
   width: 640
   height: 480
-  title: "15 Puzzle"
+  visible: true
   background: Rectangle {
     color: "white"
   }
@@ -13,6 +13,11 @@ ApplicationWindow {
   Column {
     anchors.centerIn: parent
     spacing: 10
+    focus: true
+    Keys.onLeftPressed: mainWindow.MoveHiddenPanelToLeft()
+    Keys.onRightPressed: mainWindow.MoveHiddenPanelToRight()
+    Keys.onUpPressed: mainWindow.MoveHiddenPanelToUp()
+    Keys.onDownPressed: mainWindow.MoveHiddenPanelToDown()
 
     Label {
       text: "15 Puzzle"
