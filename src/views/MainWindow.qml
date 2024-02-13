@@ -266,10 +266,21 @@ ApplicationWindow {
       }
     }
 
-    Button {
-      text: "リセット"
-      onClicked: mainWindow.ResetGame()
+    Row {
+      spacing: 5
       anchors.horizontalCenter: parent.horizontalCenter
+
+      Button {
+        text: "リセット"
+        width: 100
+        onClicked: mainWindow.ResetGame()
+      }
+
+      Button {
+        text: "終了"
+        width: 100
+        onClicked: Qt.quit()
+      }
     }
 
     Label {
