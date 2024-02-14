@@ -30,7 +30,7 @@ int RunAsCli()
     board.Show();
 
     char input;
-    std::cout << "隠れパネルの移動(Hキー: 左移動, Jキー: 上移動, Kキー: 下移動, Lキー: 右移動)、終了(qキー): " << std::flush;
+    std::cout << "隠れパネルの移動(Hキー: 左移動, Jキー: 上移動, Kキー: 下移動, Lキー: 右移動)、終了(qキー)、リセット(rキー): " << std::flush;
     std::cin >> input;
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
@@ -38,6 +38,10 @@ int RunAsCli()
     {
       std::cout << "ゲームを終了します。" << std::endl;
       break;
+    }
+    if (input == 'r')
+    {
+      board.Initialize();
     }
     else if (input == 'h' || input == 'H')
     {
