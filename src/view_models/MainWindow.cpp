@@ -11,22 +11,26 @@ MainWindow::MainWindow()
 
 void MainWindow::MoveHiddenPanelToLeft()
 {
-  qDebug() << "MainWindow::MoveHiddenPanelToLeft was called!!";
+  _board.MovePanel(MoveDirection::Left);
+  emit PanelsChanged();
 }
 
 void MainWindow::MoveHiddenPanelToRight()
 {
-  qDebug() << "MainWindow::MoveHiddenPanelToRight was called!!";
+  _board.MovePanel(MoveDirection::Right);
+  emit PanelsChanged();
 }
 
 void MainWindow::MoveHiddenPanelToUp()
 {
-  qDebug() << "MainWindow::MoveHiddenPanelToUp was called!!";
+  _board.MovePanel(MoveDirection::Up);
+  emit PanelsChanged();
 }
 
 void MainWindow::MoveHiddenPanelToDown()
 {
-  qDebug() << "MainWindow::MoveHiddenPanelToDown was called!!";
+  _board.MovePanel(MoveDirection::Down);
+  emit PanelsChanged();
 }
 
 void MainWindow::ResetGame()
