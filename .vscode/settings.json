@@ -92,7 +92,8 @@
         "unordered_set": "cpp",
         "variant": "cpp",
         "*.def": "cpp",
-        "qguiapplication": "cpp"
+        "qguiapplication": "cpp",
+        "qqmlcontext": "cpp"
     },
     "C_Cpp.errorSquiggles": "enabled",
     "editor.tabSize": 2,

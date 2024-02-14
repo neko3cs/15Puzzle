@@ -19,7 +19,6 @@ add_executable(${PROJECT_NAME}
   src/main.cpp
   src/views/qml.qrc
   src/view_models/MainWindow.cpp
-  src/models/FifteenPuzzle.cpp
   src/models/Board.cpp
   src/models/Panel.cpp
 )
