@@ -70,6 +70,9 @@ void MainWindow::SetPanels(const QVariantList &list)
 
 void MainWindow::MoveHiddenPanel(MoveDirection direction)
 {
+  if (_board.IsSolved())
+    return;
+
   _board.MovePanel(direction);
   if (_board.IsSolved())
   {
