@@ -9,7 +9,7 @@ class MainWindow : public QObject
 {
   Q_OBJECT
   Q_PROPERTY(QString Text READ GetText WRITE SetText NOTIFY TextChanged)
-  Q_PROPERTY(QVariantList DataList READ GetDataList WRITE SetDataList NOTIFY DataListChanged)
+  Q_PROPERTY(QVariantList Panels READ GetPanels WRITE SetPanels NOTIFY PanelsChanged)
 
 public:
   MainWindow();
@@ -22,15 +22,14 @@ public:
 
   QString GetText() const;
   void SetText(const QString &text);
-  QVariantList GetDataList() const;
-  void SetDataList(const QVariantList &list);
+  QVariantList GetPanels() const;
+  void SetPanels(const QVariantList &list);
 
 signals:
   void TextChanged();
-  void DataListChanged();
+  void PanelsChanged();
 
 private:
-  Board board;
+  Board _board;
   QString _text;
-  std::vector<int> _dataList = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15};
 };

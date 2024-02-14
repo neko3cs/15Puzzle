@@ -53,6 +53,18 @@ void Board::Show()
   std::cout << std::endl;
 }
 
+std::vector<int> Board::GetPanelsAsIntVector() const
+{
+  std::vector<int> vec;
+
+  for (Panel panel : board)
+  {
+    vec.push_back(panel.GetNumber());
+  }
+
+  return vec;
+}
+
 void Board::MovePanel(MoveDirection direction)
 {
   auto hidden = std::find_if(board.begin(), board.end(), [](Panel p)

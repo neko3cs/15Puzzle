@@ -13,6 +13,7 @@ public:
 	Board();
 	void Initialize();
 	void Show();
+	std::vector<int> GetPanelsAsIntVector() const;
 	void MovePanel(MoveDirection direction);
 	bool IsSolved();
 };

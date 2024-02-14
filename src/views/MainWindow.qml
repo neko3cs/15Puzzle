@@ -40,14 +40,15 @@ ApplicationWindow {
       anchors.horizontalCenter: parent.horizontalCenter
 
       Repeater {
-        model: mainWindow.DataList
-        Rectangle {
+        model: mainWindow.Panels
+        delegate: Rectangle {
           width: 50
           height: 50
-          border.color: "green"
+          color: modelData == 16 ? "green" : "white"
+          border.color: modelData == 16 ? "transparent" : "green"
 
           Text {
-            text: modelData
+            text: modelData == 16 ? "" : modelData
             font.pixelSize: 36
             color: "black"
             anchors.fill: parent
@@ -55,12 +56,6 @@ ApplicationWindow {
             horizontalAlignment: Text.AlignHCenter
           }
         }
-      }
-
-      Rectangle {
-        width: 50
-        height: 50
-        color: "green"
       }
     }
 

@@ -6,6 +6,7 @@ MainWindow::MainWindow()
     : QObject(),
       _text("ゲームスタート！")
 {
+  _board.Initialize();
 }
 
 void MainWindow::MoveHiddenPanelToLeft()
@@ -47,10 +48,10 @@ void MainWindow::SetText(const QString &text)
   }
 }
 
-QVariantList MainWindow::GetDataList() const
+QVariantList MainWindow::GetPanels() const
 {
   QVariantList list;
-  for (auto value : _dataList)
+  for (auto value : _board.GetPanelsAsIntVector())
   {
     list.append(QVariant::fromValue(value));
   }
@@ -58,27 +59,8 @@ QVariantList MainWindow::GetDataList() const
   return list;
 }
 
-void MainWindow::SetDataList(const QVariantList &list)
+void MainWindow::SetPanels(const QVariantList &list)
 {
-  std::vector<int> convedList;
-  for (const QVariant &item : list)
-  {
-    if (item.canConvert<int>())
-    {
-      convedList.push_back(item.value<int>());
-    }
-    else
-    {
-      qWarning();
-    }
-  }
-
-  bool listIsSame = _dataList.size() == convedList.size() &&
-                    std::equal(_dataList.begin(), _dataList.end(), convedList.begin(), convedList.end());
-
-  if (listIsSame)
-  {
-    _dataList = convedList;
-    emit DataListChanged();
-  }
+  // 画面から直接Boardを変更することは想定しないので実装しない
+  // ただ、Signalは用意しないと落ちるっぽいので、シグネチャだけ用意しておく
 }
