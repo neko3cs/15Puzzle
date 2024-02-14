@@ -31,7 +31,8 @@ void MainWindow::MoveHiddenPanelToDown()
 
 void MainWindow::ResetGame()
 {
-  qDebug() << "MainWindow::ResetGame was called!!";
+  _board.Initialize();
+  emit PanelsChanged();
 }
 
 QString MainWindow::GetText() const

@@ -28,6 +28,9 @@ void Board::Initialize()
   auto engine = std::default_random_engine(seed);
   std::shuffle(numbers.begin(), numbers.end(), engine);
 
+  // 再初期化の時のために一度空にする
+  board.clear();
+
   // 仮コンテナのシャッフルした数字をボードに並べる
   for (int x = 0; x < SIZE; x++)
   {
