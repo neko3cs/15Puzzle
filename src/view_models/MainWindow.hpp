@@ -32,4 +32,6 @@ signals:
 private:
   Board _board;
   QString _text;
+
+  void MoveHiddenPanel(MoveDirection direction);
 };

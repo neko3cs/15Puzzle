@@ -11,32 +11,30 @@ MainWindow::MainWindow()
 
 void MainWindow::MoveHiddenPanelToLeft()
 {
-  _board.MovePanel(MoveDirection::Left);
-  emit PanelsChanged();
+  MoveHiddenPanel(MoveDirection::Left);
 }
 
 void MainWindow::MoveHiddenPanelToRight()
 {
-  _board.MovePanel(MoveDirection::Right);
-  emit PanelsChanged();
+  MoveHiddenPanel(MoveDirection::Right);
 }
 
 void MainWindow::MoveHiddenPanelToUp()
 {
-  _board.MovePanel(MoveDirection::Up);
-  emit PanelsChanged();
+  MoveHiddenPanel(MoveDirection::Up);
 }
 
 void MainWindow::MoveHiddenPanelToDown()
 {
-  _board.MovePanel(MoveDirection::Down);
-  emit PanelsChanged();
+  MoveHiddenPanel(MoveDirection::Down);
 }
 
 void MainWindow::ResetGame()
 {
   _board.Initialize();
+  _text = "ゲームスタート！";
   emit PanelsChanged();
+  emit TextChanged();
 }
 
 QString MainWindow::GetText() const
@@ -68,4 +66,15 @@ void MainWindow::SetPanels(const QVariantList &list)
 {
   // 画面から直接Boardを変更することは想定しないので実装しない
   // ただ、Signalは用意しないと落ちるっぽいので、シグネチャだけ用意しておく
+}
+
+void MainWindow::MoveHiddenPanel(MoveDirection direction)
+{
+  _board.MovePanel(direction);
+  if (_board.IsSolved())
+  {
+    _text = "パズル完成！おめでとう！";
+  }
+  emit PanelsChanged();
+  emit TextChanged();
 }
