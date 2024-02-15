@@ -12,3 +12,5 @@ CLI実行にも対応していて、 `--cli` をつけて端末で実行する�
 
 - [Introduction to Qt | Qt 6.6](https://doc.qt.io/qt-6/qt-intro.html)
 - [Building a QML application | Build with CMake 6.6.1](https://doc.qt.io/qt-6/cmake-build-qml-application.html)
+- [Roboto - Google Fonts](https://fonts.google.com/specimen/Roboto)
+  - Material Styleを使うのに必要っぽい
