@@ -65,13 +65,13 @@ ApplicationWindow {
 
       Button {
         text: "リセット"
-        width: 100
+        width: 120
         onClicked: mainWindow.ResetGame()
       }
 
       Button {
         text: "終了"
-        width: 100
+        width: 120
         onClicked: Qt.quit()
       }
     }
