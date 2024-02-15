@@ -1,8 +1,6 @@
 #pragma once
 #include <QObject>
 #include <QVariant>
-#include <QString>
-#include <vector>
 #include "../models/Board.hpp"
 
 class MainWindow : public QObject

@@ -1,5 +1,3 @@
-#include <QDebug>
-#include <algorithm>
 #include "MainWindow.hpp"
 
 MainWindow::MainWindow()
