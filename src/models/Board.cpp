@@ -3,9 +3,9 @@
 #include <iostream>
 #include <list>
 #include <vector>
-#include <algorithm> //shuffle()用
-#include <random>    //default_random_engine()用
-#include <chrono>    //system_clock()用
+#include <algorithm>
+#include <random>
+#include <chrono>
 
 Board::Board()
 {
@@ -13,25 +13,20 @@ Board::Board()
 
 void Board::Initialize()
 {
-  // 時間ベースのシードを取得
   unsigned seed =
       std::chrono::system_clock::now().time_since_epoch().count();
 
-  // 仮のコンテナにSIZE*SIZE分の数字を格納する
   std::vector<int> numbers;
   for (int num = 1; num <= SIZE * SIZE; num++)
   {
     numbers.push_back(num);
   }
 
-  // ランダムにシャッフルする
   auto engine = std::default_random_engine(seed);
   std::shuffle(numbers.begin(), numbers.end(), engine);
 
-  // 再初期化の時のために一度空にする
-  board.clear();
+  board.clear(); // 再初期化の時のため
 
-  // 仮コンテナのシャッフルした数字をボードに並べる
   for (int x = 0; x < SIZE; x++)
   {
     for (int y = 0; y < SIZE; y++)

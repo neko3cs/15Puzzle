@@ -66,7 +66,6 @@ int RunAsCli()
 
     if (board.IsSolved())
     {
-      // パズルが解けたら褒めて終了
       std::cout << "おめでとうございます！パズルが解けました！" << std::endl;
       break;
     }
@@ -83,7 +82,7 @@ int RunAsGui(int argc, char *argv[])
   QQuickStyle::setStyle("Material");
 #endif
 
-  MainWindow mainWindow; // engineの前にmainWindowを宣言しないとpropertyがnullだという実行時エラーが出る
+  MainWindow mainWindow;
   QQmlApplicationEngine engine;
   engine.rootContext()->setContextProperty("mainWindow", &mainWindow);
   QObject::connect(

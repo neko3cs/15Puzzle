@@ -12,7 +12,6 @@ int Panel::GetNumber() const
 
 std::string Panel::ToString()
 {
-	// TODO: いずれは画像を返す
 	return IsHidden() ? "■ " : std::to_string(number);
 }
 
